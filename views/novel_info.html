@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>小说详情</title>
+	<link rel="stylesheet" type="text/css" href="./lib/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<link rel="stylesheet" type="text/css" href="./css/novel_in.css">
+	<link rel="stylesheet" type="text/css" href="./css/novel_catalogue.css">
+	<link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="./css/common.css">
+</head>
+<body>
+	<div id="xx">
+		<header>
+	        <!-- logo及隐藏菜单按钮 -->
+	        <div class="logo">
+	            <a href="index" class="logo-img"></a>
+	            <button class="dowm-menu" @click="animate()">
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	        </div>
+	        <!-- 隐藏菜单 -->
+	        <div class="menu" v-if="show">
+	            <ul class="nav navbar-nav">
+	                <li><a href="./class">全部分类</a></li>
+	                <li><a href="./sort">排行榜<span class="new"></span></a></li>
+	                <li>
+	                    <form action="/search/" id="nav_search_form" class="navbar-form nav-search-form" role="search" method="GET">
+	                        <div class="nav-search-bar">
+	                            <input type="text" class="form-control" name="kw" id="nav_search_ipt" placeholder="你好！小丑小姐" autocomplete="off">
+	                            <button class="btn btn-default" type="submit"></button>
+	                        </div>
+	                    </form>
+	                </li>
+	                <li class="jianfan"><a name="StranLink" id="StranLink">简繁切换</a></li>
+	                <li v-show="login" class="logined logined1"><span></span><a href="./person">热烈欢迎:  {{user_info.username}}同志</a></li>
+	                <!-- <li v-show="login" class="logined logined1"><span></span><a href="./person">个人中心</a></li> -->
+	                <li v-show="login" class="logined logined2"><span></span>收藏夹</li>
+	                <li v-show="login" v-if="login" class="logined logined3" @click="tuichu()"><span></span>退出登录</li>
+	                <li v-show="!login"v-if="!login"><a href="/login">登录</a></li>
+					<li v-show="!login"><a href="/create">注册</a></li>
+	                <li>
+	                    <a href="/center" class="btn btn-primary submit-novel">
+	                        <i class="icon-edit"></i>
+	                        <span class="nav-label">投稿</span>
+	                        <span class="nav-label">{{user_info.username}}</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+	        <!--隐藏菜单end -->
+	    </header>
+	</div>
+	<div id="app" class="bo_wrapper bo" >
+		<!-- 图书封面介绍 -->
+		<div class="tushu">
+			<div class="book_header">
+				<div class="book_bg"></div>
+				<div class="book_info_box">
+					<div class="book_img">
+						<img :src="novel_info[8].img" alt="">
+					</div>
+					<div class="book_info">
+						<h1 class="book_title">{{novel_info[8].title}}</h1>
+						<p class="book_author"><a href="#">{{novel_info[8].write}}</a></p>
+						<p class="book_cats">
+							<a href="#">{{novel_info[8].classify}}</a>
+							<!-- <span class="separator">/</span>
+							<a href="#">恋爱</a>
+							<span class="separator">/</span>
+							<a href="#">校园</a> -->
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- 图书简介 -->
+			<div class="book_intro">
+				<div class="about_text" :class="{show_more:is_more}" v-html="novel_info[8].intro">
+				
+				</div>
+				<div class="foot_text">
+					<p v-on:click='is_more=!is_more'>{{text}}</p>
+				</div>
+			</div>
+		</div>
+		<!-- 开始阅读 -->
+		<div class="book_controls">
+			<div class="book_btn">
+				<a href="#" class="bo_btn bg_green">开始阅读</a>
+				<a href="#" class="bo_btn ml_5">应缓</a>
+				<a href="#" class="bo_btn ml_5">收藏</a>
+			</div>
+		</div>
+		<!-- 图书章节 -->
+		<div class="book_volumes">
+			<div class="section_title">
+				<b>目录</b>
+				<span class="info">共7卷98章 {{novel_info[8].number}}</span>
+				<span class="more" v-on:click='show_more()'>更多></span>
+			</div>
+			<div class="content_table_wrp">
+				<div class="volume_list">
+					<div class="volume" v-for="x in novel_info">
+						<div class="cover">
+							<a href="#"><img :src="x.img" alt=""></a>
+						</div>
+						<div class="vol_info">
+							<h1 class="title">{{x.catalogue_title}}</h1>
+							<p class="desc">
+								{{x.catalogue_info}}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 最近更新 -->
+		<div class="book_recent">
+			<p class="section_title"><b>最近更新</b></p>
+			<ul class="chapter_list">
+				<!-- <li>第九章 龙虾四组舞（十四）<small class="chapter_update_time">2018-04-30 17:23</small></li> -->
+				<li v-for="x in new_chapters">{{x}}</li>
+				
+			</ul>
+		</div>
+		<!-- 评论区 -->
+		<div class="book_comments">
+			<p class="section_title"><b>评论</b><span class="ml_5">共<span>3724</span>条</span></p>
+			<div class="comm_form media">
+				<div class="media_body">
+					<div class="comm-form-msg" :class="{show:false}">请
+						<a href="#">登录</a>
+						 后再评论, 没有账号请先 
+						<a href="#">注册</a>
+					</div>
+					
+					<div class="comm_content-wrp">
+						<p>
+							<textarea v-model="ping_content.content" class="form_control comm_content" placeholder="在这里输入评论，请自觉遵守法规，严禁发布色情、暴力、反动言论"></textarea>
+						</p>
+						<div class="comm_input_ctrl">
+							<a href="javascript:;" class="iconfont icon-biaoqing"></a>
+							<button class="btn comm_enter btn_primary" v-on:click="ping_lun()">发表评论</button>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 回复区 -->
+				<div class="commentComponent">
+					<div class="comm_list_inner">
+						<div class="comm_item" v-for='(x,index) in discuss'>
+							<div class="comm_body">
+								<!-- 分割线 -->
+								<div class="comm-split-line"></div>
+								<!-- 昵称头像 -->
+
+								<div class="comm_name">
+									<a href="#" class="comm_img"><img :src="x.img" alt=""></a>
+									<a href="#" class="">{{x.name}}</a>
+								</div>
+								<!-- 评论内容 -->
+								<div class="comm_content">
+									<span class="comm_actual_content">{{x.content}}</span>
+								</div>
+								<!-- 评论时间，功能 -->
+								<div class="comm_status">
+									<span class="comm_time">{{x.d_time}}</span>
+									<span class="iconfont icon-zan" :class="{zang:x.is_zang}" v-on:click="dian_zang(x)">({{x.praise}})</span>
+									<span class="comm_reply" v-on:click="hui_fu(index)">回复</span>
+									<span class="comm_report">举报</span>
+								</div>
+							</div>
+							<!-- 回复评论 -->
+							<div class="comm_list_replies replies" v-for='y in x.reply'>
+								<div class="comm_list_inner">
+									<div class="comm_item">
+										<div class="comm_body">
+											<span class="comm_name">
+												<a href="#" class="comm_img"><img :src="y.img" alt=""></a>
+												<a href="#" class="">{{y.name}}</a>
+											</span>
+											<!-- 评论内容 -->
+											<span class="comm_content">
+												<span class="comm_actual_content">{{y.content}}
+												</span>
+											</span>
+											<!-- 评论时间，功能 -->
+											<div class="comm_status">
+												<span class="comm_time">{{y.d_time}}</span>
+												<span class="iconfont icon-zan" :class="{zang:y.is_zang}" v-on:click="dian_zang(y)">({{y.praise}})</span>
+												<span class="comm_reply">回复</span>
+												<span class="comm_report">举报</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 回复评论 end -->
+						</div>
+						<!-- comm_item end -->
+						
+					</div>
+					<!-- 分页 -->
+					<div class="comm-list-pagination">
+						<ul class="pagination1 small">
+							<li class="disabled"><span class="current prev">上一页</span></li>
+							<li class="active"><span class="current">1</span></li>
+							<li><a href="javascript:void(0);" class="page-link">2</a></li>
+							<li><a href="javascript:void(0);" class="page-link">3</a></li>
+							<li><span class="ellipse clickable">…</span></li>
+							<li><a href="javascript:void(0);" class="page-link">159</a></li>
+							<li><a href="javascript:void(0);" class="page-link">160</a></li>
+							<li><a href="javascript:void(0);" class="page-link">161</a></li>
+							<li><a href="javascript:void(0);" class="page-link next">下一页</a></li>
+						</ul>
+					</div>
+					<!-- 底部评论输入框 -->
+					<div class="bottom comm_form media">
+						<div class="media_body">
+							<div class="comm-form-msg" :class="{show:false}">请
+								<a href="#">登录</a>
+								 后再评论, 没有账号请先 
+								<a href="#">注册</a>
+							</div>
+							<div class="comm_content-wrp">
+								<p>
+									<textarea class="form_control comm_content" placeholder="在这里输入评论，请自觉遵守法规，严禁发布色情、暴力、反动言论"></textarea>
+								</p>
+								<div class="comm_input_ctrl">
+									<a href="javascript:;" class="iconfont icon-biaoqing"></a>
+									<button class="btn comm_enter btn_primary">发表评论</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <cata-logue la="我是你大爷"></cata-logue> -->
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="link-grid row">
+						<div class="grid col-xs-4">
+							<p class="link-grid-title"><b>网站概要</b></p>
+							<p><a href="#">关于我们</a></p>
+							<p><a href="#">联系我们</a></p>
+							<p><a href="#">加入我们</a></p>
+							<p><a href="#">免责声明</a></p></div>
+						<div class="grid col-xs-4"><p class="link-grid-title"><b>作者服务</b></p>
+							<p><a href="#">联系编辑</a></p>
+							<p><a href="#">福利与签约</a></p></div>
+						<div class="grid col-xs-4"><p class="link-grid-title"><b>轻之文库</b></p>
+							<p><a href="#">文库精选</a></p>
+							<p><a href="#">官方正版</a></p>
+							<p><a href="#">轻小说文库</a></p></div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="friend-link">
+						<p class="friend-link-title"><b>首席合作</b></p>
+						<p>
+							<a target="_blank" href="#">米画师</a>
+							<a target="_blank" href="#">MissEvan_M站</a>
+							<a target="_blank" href="#">网易GACHA</a>
+							<a target="_blank" href="#">幻音</a>
+							<a target="_blank" href="#">萌导航</a>
+							<a target="_blank" href="#">2144游戏网</a>
+						</p>
+						<p class="friend-link-title"><b>媒体合作</b></p>
+						<p>
+							<a target="_blank" href="#">和邪社</a>
+							<a target="_blank" href="#">ACGdoge</a>
+							<a target="_blank" href="#">第一弹</a>
+							<a target="_blank" href="#">178动漫</a>
+						</p>
+						<p class="friend-link-title"><b>游戏合作</b></p>
+						<p>
+							<a target="_blank" href="#">少女咖啡枪</a>
+							<a target="_blank" href="#">诺诺来自异世界</a>
+						</p>
+					</div>
+					<ul class="pr-link">
+						<li><b>友情链接</b></li>
+						<li><a href="#">喵特漫展</a></li>
+						<li><a href="#">画萌网</a></li>
+						<li><a href="#">胖次网</a></li>
+						<li><a href="#">CnGal</a></li>
+						<li><a href="#">Cooi社区</a></li>
+						<li><a href="#">萌玩网</a></li>
+						<li><a href="#">源音塘</a></li>
+						<li><a href="#">漫漫漫画</a></li>
+						<li><a href="#">翼萌动漫</a></li>
+						<li><a href="#">柚栖</a></li>
+						<li><a href="#">大角虫漫画</a></li>
+						<li><a href="#">汇漫网</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<br><img src="./images/logo.png" class="brand-image">
+			<p class="brand">Copyright 2017 6Book. All Rights Reserved.</p>
+		</div>
+	</div>
+
+	<template id="more">
+		<div id="catalogue">
+			<div class="catalog_page">
+				<div class="close_box">
+					<a href="#" class="close_back">关闭目录{{coco}}</a>
+				</div>
+				<div class="section_title">
+					<b>目录{{la}}</b>
+					<span class="info">共10卷104章 112.2万字</span>
+				</div>
+				<div class="catalog_list">
+					<div class="volume_wrp">
+						<div class="volume1">
+							<div class="cover">
+								<a href="#">
+									<img src="img/novel_info_bg.jpg" alt="">
+								</a>
+							</div>
+							<div class="volume_info">
+								<h2 class="title">第10卷 第十卷</h2>
+								<div class="desc">
+									劫狱逃亡的余韵未散，霜月学园为逃亡者们提供庇护之地。人类之国的战争打响，帝国的魔爪伸向相隔海峡的逃亡者。远古遗产“尤克特拉希尔”为逃亡者们献上单程机票，海雾舰队扬帆起航。她在无法回头的道路上渐行渐远，孤独女王的心愿无人可诉。
+								</div>
+							</div>
+						</div>
+						<ul class="chapter_list">
+							<li>序章</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+						</ul>
+					</div>
+
+					<div class="volume_wrp">
+						<div class="volume1">
+							<div class="cover">
+								<a href="#">
+									<img src="img/novel_info_bg.jpg" alt="">
+								</a>
+							</div>
+							<div class="volume_info">
+								<h2 class="title">第10卷 第十卷</h2>
+								<div class="desc">
+									劫狱逃亡的余韵未散，霜月学园为逃亡者们提供庇护之地。人类之国的战争打响，帝国的魔爪伸向相隔海峡的逃亡者。远古遗产“尤克特拉希尔”为逃亡者们献上单程机票，海雾舰队扬帆起航。她在无法回头的道路上渐行渐远，孤独女王的心愿无人可诉。
+								</div>
+							</div>
+						</div>
+						<ul class="chapter_list">
+							<li>序章</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+							<li>第九章 龙虾四组舞（十四）</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+
+
+	<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="lib/vue.js"></script>
+	<script type="text/javascript" src="./js/catalogue_template.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+	<script type="text/javascript">
+		// Vue.component('cata-logue', {
+		// 	data:function(){
+		// 		return {
+
+		// 		}
+		// 	},
+
+		// 	template:'#more',
+		// });
+
+
+		let app = new Vue({
+		 	el:'#app',
+		 	data:{
+		 		login:false,
+		 		//封面简介
+		 		novel_info:{
+		 			// novel_img:'./images/novel_info_bg.jpg',
+		 			// title:'圣瓦尔基里见习特务备忘录',
+		 			// author:'南尼喜嘛斯嘎',
+		 			// classify:['战斗','爱情','动作'],
+		 			// introduce:`Only the dead
+				 	// 	have seen the end of war.<br>只有死者才能看到战争的终结。<br>			（柏拉图）<br><br>于是，“大战灾”来了——<br>二十一世纪初期，潜伏于地底的谜之凶暴生物“宁恩”自长久的休眠中醒来，向人类大举进攻。<br>在这场斗争之中，没有休战、没有投降、没有俘虏，只有盈满绝望、疯狂与杀戮的死斗。<br>当这首惨烈交响曲正式画下休止符时，人类文明几近崩坏。<br>纵然如此，人类却没有放弃希望，重新构建起曾经的“伊甸园”。<br>通过长久以来的不辍努力，得以苟延残喘的人们，终于收敛住在这场空前灾难中破溃的疮口。<br>为坚守人类最后的希望以及夺回在“大战灾”中失去的一切，被称为“树不子”的少年少女们毫不犹豫地踏入圣瓦尔基里学园的大门。<br>就在这时，一直为躲避暗杀而四处逃亡的少年——<br>遇到了为复仇而生的公主殿下；<br>遇到了为守护而生的青梅竹马；<br>遇到了为偿还而生的倒霉少女；<br>遇到了属于自己的命运……<br>今宵，英雄与战姬们的歌剧，就此拉开帷幕。`
+		 		},
+		 		//章节介绍
+		 		// catalogue:[
+		 		// 	{
+		 		// 		novel_img:"./images/novel_info_bg.jpg",
+		 		// 		catalogue_title:'第7卷 第六卷',
+		 		// 		catalogue_info:'爱情是一场战斗，我打算继续打下去,直到胜利。” （米兰·昆德拉）抱着相同信念的少年少女，在不同的时间、地点，为彼此奋战到底。然而——突如其来的异国女子；心怀鬼胎的间谍少女；身份不明的武装人员；动机成谜的职业佣兵。这一切，却让这场异常复杂的“生死赌局”变得更加扑朔迷离。那么，“辛德瑞拉”与“白马王子”又是否能破镜重圆呢？这部盈满疯狂、杀戮与阴谋的黑色童话，远未至落幕之时。',
+		 		// 	},
+		 		// 	{
+		 		// 		novel_img:"./images/novel_info_bg.jpg",
+		 		// 		catalogue_title:'第7卷 第六卷',
+		 		// 		catalogue_info:'爱情是一场战斗，我打算继续打下去,直到胜利。” （米兰·昆德拉）抱着相同信念的少年少女，在不同的时间、地点，为彼此奋战到底。然而——突如其来的异国女子；心怀鬼胎的间谍少女；身份不明的武装人员；动机成谜的职业佣兵。这一切，却让这场异常复杂的“生死赌局”变得更加扑朔迷离。那么，“辛德瑞拉”与“白马王子”又是否能破镜重圆呢？这部盈满疯狂、杀戮与阴谋的黑色童话，远未至落幕之时。',
+		 		// 	}
+		 		// ],
+		 		// 最近更新的章节
+		 		new_chapters:['第九章 龙虾四组舞（十四）','第九章 龙虾四组舞（十三）','第九章 龙虾四组舞（十二）'],
+		 		// 更多简介是否显示
+		 		is_more:false,
+		 		// 评论信息
+		 		discuss:[
+		 			{
+		 				is_zang:false,
+		 				img:'./images/tou.jpg',
+		 				name:'南尼前辈早~',
+		 				content:'南尼前辈早~',
+		 				d_time:'2018年4月30日 23:19',
+		 				praise:1,
+		 				reply:[
+		 					{
+		 						is_zang:false,
+		 						img:'./images/tou.jpg',
+		 						name:'南尼前辈早~',
+		 						content:'南尼前辈早~',
+		 						d_time:'2018年4月30日 23:19',
+		 						praise:0,
+		 					},
+		 					{
+		 						is_zang:false,
+		 						img:'./images/tou.jpg',
+		 						name:'南尼前辈早~',
+		 						content:'南尼前辈早~',
+		 						d_time:'2018年4月30日 23:19',
+		 						praise:0,
+		 					}
+		 				]
+		 			},
+		 			{
+		 				is_zang:false,
+		 				img:'./images/tou.jpg',
+		 				name:'南尼前辈早~',
+		 				content:'南尼前辈早~',
+		 				d_time:'2018年4月30日 23:19',
+		 				praise:2,
+		 				reply:[
+		 					{
+		 						is_zang:false,
+		 						img:'./images/tou.jpg',
+		 						name:'南尼前辈早~',
+		 						content:'南尼前辈早~',
+		 						d_time:'2018年4月30日 23:19',
+		 						praise:0,
+		 					},
+		 					{
+		 						is_zang:false,
+		 						img:'./images/tou.jpg',
+		 						name:'南尼前辈早~',
+		 						content:'南尼前辈早~',
+		 						d_time:'2018年4月30日 23:19',
+		 						praise:0,
+		 					}
+		 				]
+		 			},
+		 			{
+		 				is_zang:false,
+		 				img:'./images/tou.jpg',
+		 				name:'南尼前辈早~',
+		 				content:'南尼前辈早~',
+		 				d_time:'2018年4月30日 23:19',
+		 				praise:0,
+		 				reply:[
+		 					
+		 				]
+		 			},
+		 		],
+		 		//评论功能
+		 		ping_content:{
+		 			is_zang:false,
+		 			img:'./images/tou.jpg',
+	 				name:'南尼前辈早~',
+	 				content:'',
+	 				d_time: new Date().getTime(),
+	 				praise:0,
+	 				reply:[
+	 					
+	 				]
+		 		},
+		 		text:'显示更多',
+
+
+		 	},
+		 	methods:{
+	 			show_more:function(){
+					window.location.href="./novel_catalogue";
+	 			},
+	 			ping_lun:function(){
+	 				if(this.ping_content.content==''){
+	 					alert('温馨提示：草泥马！没内容哦');
+	 					return;
+	 				}
+	 				let json = {};
+	 				console.log(this.ping_content.d_time);
+	 				for (x in this.ping_content){
+						json[x]=this.ping_content[x];
+					}
+	 				this.discuss.push(json);
+	 				this.ping_content.content='';
+	 			},
+	 			
+			    dian_zang:function(obj){
+			    	if(obj.is_zang==false){
+			    		obj.praise+=1;
+			    	}else{
+			    		obj.praise-=1;
+			    	}
+			    	obj.is_zang=!obj.is_zang;
+			    },
+
+			    hui_fu:function(index){
+			    	
+			    	let a = $('.bottom.comm_form').offset().top;
+			    	a=a-200;
+			    	// $('body').animate({scrollTop:a},1000);
+			    	$("html,body").animate({scrollTop:a+"px"}, 500);
+
+			    	// console.log(this.discuss[index].reply);
+			    }
+
+	 		},
+	 		watch: {
+			    is_more:function (val) {
+			    	val?this.text="收起":this.text="显示更多";
+			    },
+			    
+			},
+			mounted:function(){
+                let that = this;
+                $.ajax({
+                    type:'get',
+                    url:'/api/getList2',
+                    dataType:'json',
+                    success:function(json){
+                        // console.log(json);
+                        that.novel_info = json.result;
+                        // console.log(that.novel_info);
+                    }
+                });
+            }
+		});
+	</script>
+
+</body>
+</html>

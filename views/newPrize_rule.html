@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6Book-新人赏</title>
+    <script src="./lib/bootstrap.min.js"></script>
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/newPrize_common.css">
+    <link rel="stylesheet" href="css/newPrize_rule.css">
+</head>
+<body>
+<div id="app">
+    <!--顶部导航-->
+    <div class="nav" id="nav">
+        <div class="nav-container">
+            <div class="logo fl"><a :href="index"><img id="logo" :src="newPrizeLogo" alt=""></a></div>
+            <div class="page-title fl">{{pageTitle}}</div>
+            <div class="menu-icon fr" id="menu-icon"></div>
+            <div class="menu" style="width: 200px;">
+                <span class="close"></span>
+                <ul class="menu-list">
+                    <li v-for="(nav,index) in navs"><a :href="nav.href">{{nav.text}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!--头部-->
+    <div class="head">
+        <!--头图-->
+        <div class="head-img"></div>
+    </div>
+    <!--主体内容-->
+    <div class="main">
+        <div class="mobile-block-title slim">{{objectTitle[4].text}}</div>
+        <span class="line"></span>
+        <div class="mobile-block-body">
+            <img :src="imgs[4].src" width="100%">
+        </div>
+        <div class="mobile-block">
+            <div class="mobile-block-title slim">{{objectTitle[5].text}}</div>
+            <span class="line"></span>
+            <div class="mobile-block-body">
+                <p>{{active.text}}</p>
+            </div>
+        </div>
+        <div class="mobile-block">
+            <div class="mobile-block-title slim">{{objectTitle[6].text}}</div>
+            <span class="line"></span>
+            <div class="mobile-block-body">
+                <ol>
+                    <li v-for="(attention,index) in attentions">{{attention.text}}</li>
+                </ol>
+            </div>
+        </div>
+        <div class="mobile-block">
+            <div class="mobile-block-title slim">{{objectTitle[7].text}}</div>
+            <span class="line"></span>
+            <div class="mobile-block-body">
+                <h3>长篇组</h3>
+                <p><i>字数要求：</i>10万字以上，具有50万字以上长篇作品规划的作品。</p>
+                <p><i>投稿数量：</i>长篇每人限投两稿。</p>
+                <p><i>补充要求：</i>需补充每卷1000字的前三卷大纲，以及4个主要角色人设表。</p>
+                <h3>中篇组</h3>
+                <p><i>字数要求：</i>5万~12万字，一卷完结作品。</p>
+                <p><i>投稿数量：</i>中篇每人限投两稿。</p>
+                <p><i>补充要求：</i>需补充1000字大纲。</p>
+                <h3>短篇组</h3>
+                <p><i>字数要求：</i>5千~5万字，完结作品。</p>
+                <p><i>投稿数量：</i>无投稿限制。</p>
+                <p><i>补充要求：</i>无。</p>
+            </div>
+        </div>
+        <div class="mobile-block">
+            <div class="mobile-block-title slim">{{objectTitle[8].text}}</div>
+            <span class="line"></span>
+            <div class="mobile-block-body">
+                <h3>长篇组</h3>
+                <ul class="prize-list">
+                    <li><b>大赏</b><span>奖金3万元、商签合同、全套封面与插画、漫画改编、海外实体轻小说出版、影视化改编机会、长篇大赏奖杯</span>
+                    </li>
+                    <li><b>优秀赏</b><span>奖金1万元、商签合同、全套封面与插画、漫画改编机会、海外实体轻小说出版机会、长篇优秀赏奖杯</span>
+                    </li>
+                    <li><b>新锐赏</b><span>奖金5000元、商签优先级、全套封面与插画、漫画改编机会、实体轻小说制作、长篇新锐赏奖杯</span>
+                    </li>
+                    <li><b>人气赏</b><span>奖金3000元、商签优先级、原创封面、实体轻小说制作、长篇人气赏奖杯</span>
+                    </li>
+                </ul>
+                <h3>中篇组</h3>
+                <ul class="prize-list">
+                    <li><b>大赏</b><span>奖金1万元、商签合同、全套封面与插画、漫画改编机会、海外实体轻小说出版机会、中篇大赏奖杯</span>
+                    </li>
+                    <li><b>优秀赏</b><span>奖金5000元、商签优先级、全套封面与插画、漫画改编机会、实体轻小说制作、中篇优秀赏奖杯</span>
+                    </li>
+                    <li><b>新锐赏</b><span>奖金2000元、作品签约、原创封面、实体轻小说制作、中篇新锐赏奖杯</span>
+                    </li>
+                    <li><b>人气赏</b><span>奖金2000元、作品签约、原创封面、实体轻小说制作、中篇人气赏奖杯</span>
+                    </li>
+                </ul>
+                <h3>短篇组</h3>
+                <ul class="prize-list">
+                    <li><b>大赏</b><span>奖金5000元、商签优先级、原创封面、漫画改编机会、实体轻小说制作、短篇大赏奖杯</span>
+                    </li>
+                    <li><b>优秀赏</b><span>奖金2000元、作品签约、原创封面、实体轻小说制作、短篇优秀赏奖杯</span>
+                    </li>
+                    <li><b>新锐赏</b><span>奖金1000元、作品签约、原创封面、实体轻小说制作、短篇新锐赏奖杯</span>
+                    </li>
+                    <li><b>人气赏</b><span>奖金1000元、作品签约、原创封面、实体轻小说制作、短篇人气赏奖杯</span>
+                    </li>
+                </ul>
+                <h3>未获赏可获得参与奖励</h3>
+                <ul class="prize-list">
+                    <li><b>未入围作品</b><span>50000墨水、书评组短评</span>
+                    </li>
+                    <li><b>入围作品</b><span>10000轻币、编辑点评、新人赏入围证书</span></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--脚部信息-->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-logo"><img :src="newPrizeFootLogo" alt=""></div>
+            <div class="copyright" v-html="copyright">{{copyright}}</div>
+        </div>
+    </div>
+    <!--右下角固定按钮-->
+    <div class="joinButton">
+        <div class="talk"></div>
+        <div class="dialogue"></div>
+    </div>
+</div>
+
+<script src="js/newPrize.js"></script>
+<script src="./js/newPrize_vue.js"></script>
+
+</body>
+</html>

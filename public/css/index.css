@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a, a:link {
+    color: #000;
+    text-decoration: none;
+}
+
+/*设置a标签基本样式与伪类选择器设置*/
+a:visited, button:visited {
+}
+
+a:active, button:active {
+    text-decoration: none;
+    color: #d00000;
+}
+
+a:hover, button:hover {
+    text-decoration: none;
+    color: red;
+}
+
+a:focus, button:focus {
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+.clear {
+    clear: both;
+}
+/*
+#xx {
+    overflow: hidden;
+}*/
+
+/*轮播图*/
+.swipe {
+    width: 100%;
+    height: 210px;
+    position: relative;
+    overflow: hidden;
+}
+
+.swipe a {
+    display: inline-block;
+    height: 210px;
+    width: 32px;
+    background: rgba(0, 0, 0, .3);
+    z-index: 888;
+}
+
+.swipe .pre {
+    position: absolute;
+    float: left;
+}
+
+.swipe .next {
+    position: absolute;
+    right: 0;
+}
+
+.swipe-view {
+    width: 9000px;
+    position: absolute;
+}
+
+.swipe-view li {
+    float: left;
+}
+
+.swipe-view img {
+    width: 350px;
+    height: 210px;
+}
+
+/*轮播图end*/
+.group {
+    height: 80px;
+    width: 100%;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+}
+
+.group ul {
+    margin: 0 10%;
+}
+
+.group ul a{
+    width: 25%;
+}
+
+.group a {
+    display: block;
+    width: 15%;
+    float: left;
+
+}
+
+.group a span {
+    display: block;
+    text-align: center;
+    width: 50px;
+}
+
+/*头条*/
+.news-heading {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0 13px;
+    border-radius: 2px;
+    position: relative;
+    height: 35px;
+    line-height: 35px;
+    background: url(../images/index-toutiao.png) 7px center no-repeat #F6F7F8;
+    background-size: 56px 16px;
+    padding-left: 75px;
+    font-size: 13px;
+    color: #4A4A4A;
+}
+
+.news-heading span {
+
+}
+
+.news-heading:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+/* 头条结束 */
+/*推荐*/
+.recommend {
+    font-size: 1em;
+}
+
+.recommend .recommend-title {
+    margin: 0 20px;
+    line-height: 70px;
+    font-size: 14px;
+}
+
+.recommend .recommend-title i {
+    font-size:12px;
+    color: #9b9b9b;
+}
+
+.recommend .recommend-title span {
+    color: #00a786;
+}
+
+.comment {
+    overflow-x: scroll;
+    padding: 20px 0;
+    border-bottom: 1px solid #F6F7F8;
+    border-top: 1px solid #F6F7F8;
+}
+
+.comment::-webkit-scrollbar {
+    display: none;
+}
+
+.comment ul {
+    width: 10000px;
+}
+
+.comment li {
+    width: 300px;
+    float: left;
+    margin: 0 0 0 15px;
+}
+
+.comment h5 {
+    margin: 0px 0 0 10px;
+}
+
+.comment li img {
+    display: block;
+    width: 90px;
+}
+
+.comment p {
+    width: 180px;
+    height: 106px;
+    overflow: hidden;
+    line-height: 22px;
+    margin: 0 0 0 10px;
+    color: #777;
+    font-size: 13px;
+}
+
+/*分类*/
+
+.categories {
+    width: 100%;
+}
+
+.categories .index-cat-wrp{
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+}
+
+.index-cat-selector{
+    height: 50px;
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.index-cat-selector::-webkit-scrollbar{
+    display:none;
+}
+
+.categories .title {
+    display: inline-block;
+    width: 400px;
+    padding: 0 120px 0 20px;
+    border-bottom: 1px solid #F6F7F8;
+}
+
+.categories .title a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    float: left;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+.categories .title a.active {
+    color: #00a786;
+    border-bottom: 1px solid #00a786;
+}
+
+.categories .more {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 110px;
+    height:100%;
+    line-height: 20px;
+    background-image: linear-gradient(45deg,rgba(255,255,255,0) 0,#FFF 40%);
+}
+
+.categories .more a{
+    position: absolute;
+    right: 20px;
+    font-size: 11px;
+    background-color: transparent;
+    color: #00a786;
+}
+
+.categories ul {
+    display: none;
+    margin: 0 0 0 9px;
+}
+
+.categories .novel {
+    margin: 30px 0 0 0;
+}
+
+.categories .novel img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 87px;
+    height: 130px;
+    box-shadow: 0 2px 4px 0 #E7E7E7;
+}
+
+.categories .novel h5{
+    display: block;
+    padding-top: 15px;
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: left;
+    overflow: hidden;
+    max-height: 45px;
+}
+
+.categories .novel p{
+    font-size: 13px;
+    margin: 22px 0;
+    color: #777;
+    height: 35px;
+    overflow: hidden;
+}
+
+.categories .novel span{
+    font-size: 13px;
+    color: #aaa;
+    bottom:0;
+}
+
+.categories .tab-show {
+    display: block;
+}
+

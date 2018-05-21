@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6Book-新人赏</title>
+    <script src="./lib/bootstrap.min.js"></script>
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/newPrize_common.css">
+    <link rel="stylesheet" href="css/newPrize_index.css">
+    <link rel="stylesheet" href="css/newPrize_works.css">
+</head>
+<body>
+<div id="app">
+    <!--顶部导航-->
+    <div class="nav" id="nav">
+        <div class="nav-container">
+            <div class="logo fl"><a :href="index"><img id="logo" :src="newPrizeLogo" alt=""></a></div>
+            <div class="page-title fl">{{pageTitle}}</div>
+            <div class="menu-icon fr" id="menu-icon"></div>
+            <div class="menu" style="width: 200px;">
+                <span class="close"></span>
+                <ul class="menu-list">
+                    <li v-for="(nav,index) in navs"><a :href="nav.href">{{nav.text}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--头部-->
+    <div class="head">
+        <!--头图-->
+        <div class="head-img"></div>
+    </div>
+    <!--主体内容-->
+    <div class="main">
+        <!--投稿列表-->
+        <div class="contribute-list">
+            <div class="contribute-list-title">投稿作品列表</div>
+            <div class="mobile-block-tab">
+                <div href="#" class="tab-btn active blue">长篇组</div><div href="#" class="tab-btn green">中篇组</div><div href="#" class="tab-btn yellow">短篇组</div>
+            </div>
+            <div class="contribute-list-content long">
+                <a href="#" class="work-item" v-for="(novel,index) in novels">
+                    <div class="truncateTxt">{{novel.title}}</div>
+                    <div class="content-truncate">{{novel.content}}</div>
+                    <div class="author">
+                        <img :src="novel.authorImg">
+                        <span class="name">{{novel.name}}</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="contribute-list-content middle">
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="contribute-list-content short">
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">妖物语</div>
+                    <div class="content-truncate">每当流星划过天空的时候，你会许下怎样的愿望呢？
+                        希望...........
+                        希望..........
+                        希望..............
+                        流星好像很懂这个偶尔划过的世界一样。
+                        满载着愿望........
+                        一闪而逝，再不回头
+                        于是..........
+                        许多人长大了。
+                        如果我们双手合十继续不停祈祷的话..........
+                        ‘愿望’的份量是否可以留住那颗流星呢？
+                        如果.........这一次...........那颗流星不愿再平静的逝去呢？
+                        当看到一颗流星迎面砸来的时候.......................
+                        人们是不是还会站在原地....................
+                        傻傻的........
+                        对它许下什么愿望呢？
+
+                        一个关于愿望的物语
+                        伴随着一颗下坠的流星
+                        缓缓展开！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic.jpg!min140jpg">
+                        <span class="name">叶声雪痕</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">修个妹的仙</div>
+                    <div class="content-truncate">——你相信吗？无论是谁，冥冥之中皆有天定命数，而你，便是那受上天眷顾，身缠仙缘之人。
+                        ——呸！仙缘就是让老子出卖尊严穿上女装！
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic02.jpg!min140jpg">
+                        <span class="name">7zip</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">勇者千金不想工作！！！</div>
+                    <div class="content-truncate"> 因为连续加班七天而过劳死的金某人，因为被本地的土地神怜悯，而得到了一张异界转生的体验券……
+                        “因为看你可怜，我可以给你在异世界再来一次的机会，并答应你一个愿望！”
+                        “如果可以的话！我要在那个世界最强者的庇护下，一辈子都不用工作！！！“
+                        金某人成功成为了异世界最强勇者的女儿，只可惜那张转生券只是体验版…………
+                        可怜的主人公在异世界的欢乐人生就要开始了！！！
+                        新人，欢迎交流，(●&#39;◡&#39;●)因为插图也要自己画，更新可能会慢些……
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic03.jpg!min140jpg">
+                        <span class="name">S菌蘑人</span>
+                    </div>
+                </a>
+                <a href="#" class="work-item">
+                    <div class="truncateTxt">前勇者的我现在在魔王的手下当走狗</div>
+                    <div class="content-truncate">勇者奉命带着三个公主前去讨伐只有女性才能将其封印魔王。然而三个公主却因为地下城的各种陷阱而被俘，最终导致只有勇者一个人面对魔王。
+                        勇者：“身为男性的我根本无法杀死或封印魔王啊！我投靠魔王也是逼不得已啊！何况魔王是个大美女我下不了手啊！不要叫我魔王的走狗啊！我好歹也是大陆最强剑圣啊！还有我在魔王手下的工作并不是吐槽啊！”
+                        这是一个魔王与其走狗的故事。
+                    </div>
+                    <div class="author">
+                        <img src="./images/head-pic04.jpg!min140jpg">
+                        <span class="name">疯狂的板栗</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!--脚部信息-->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-logo"><img :src="newPrizeFootLogo" alt=""></div>
+            <div class="copyright" v-html="copyright">{{copyright}}</div>
+        </div>
+    </div>
+    <!--右下角固定按钮-->
+    <div class="joinButton">
+        <div class="talk"></div>
+        <div class="dialogue"></div>
+    </div>
+</div>
+
+<script src="./js/newPrize_vue.js"></script>
+<script src="js/newPrize.js"></script>
+
+</body>
+</html>

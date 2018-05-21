@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>center</title>
+ <meta name="viewport" content="width=device-width, maximum-scale=1">
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/center.css">
+    <script type="text/javascript" src="./lib/jquery-3.2.1.min.js"></script>
+  <script src="./lib/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> 
+</head>
+<body>
+<div id="myApp">
+<div id="app">
+  <!--===========头部开始============-->
+ <header>
+    <div class="row r1">
+        <div class="head_L col-xs-8">
+          <a href="/index" ><img src="images/logo.jpg"></a>
+        </div>
+        <div class="head_R col-xl-4">
+          <div class="head_R1">
+             <a href="person">个人中心</a>
+          </div>
+        </div>
+    </div>
+    <div class="row r2">
+       <nav class="col-xs-12">
+         <ul>
+           <li class="aaa">
+              <a href="#">文库</a>
+           </li>
+
+           <li>
+              <a href="#">专栏</a>
+           </li>
+
+           <li>
+              <a href="#">APP</a>
+           </li>
+         </ul>
+       </nav>
+    </div>
+ </header>
+  <!--========头部结束=========-->
+
+<!-- =========主体开始======== -->
+<main>
+   <div class="box">
+       <div class="img">
+           <img class="img_L" src="images/center.jpg">
+           <img class="img_R" src="images/center2.png" @click="show=!show" v-if="!show">
+           <img class="img_R" src="images/center3.png" @click="show=!show" v-if="show">
+       </div>
+
+       <!-- 隐藏菜单 -->
+ <div class="yincang">
+       <ul v-if="show">
+         <a href="#">
+           <li @click="shouye()">
+               <img src="images/book.jpg">
+               <a href="#"><span>作者首页</span></a>
+           </li>
+         </a>
+
+         <a href="#">
+           <li @click="gl1()">
+             <img src="images/pen2.png">
+             <span>作品管理</span>
+           </li>
+        </a>
+
+         <a href="#">
+            <li>
+              <img src="images/bag.png">
+              <span>钱包明细</span>
+            </li>
+         </a>
+
+          <a href="#">
+             <li  @click="tz1()">
+                 <img src="images/sound.png">
+                 <span>作者通知</span>
+             </li> 
+          </a>
+
+          <a href="#">
+             <li  @click="bj1()">
+                 <img src="images/info.png">
+                 <span>咨询编辑</span>
+             </li> 
+          </a>
+
+          <a href="#">
+             <li  @click="xx1()">
+                 <img src="images/write.png">
+                 <span>作者信息</span>
+             </li> 
+         </a>
+       </ul>
+      </div>
+     <!-- 作者首页 -->
+     <div class="sy" v-if="sy">
+          
+           <div class="box1" @click="create1()">
+              <div class="box11">
+                 <img src="images/box1.png">
+              </div>   
+           </div> 
+        
+           <div class="box2">
+              <div class="box22">
+                 <div class="box2_top">
+                    我的作品        
+                 <img src="images/box2.png">
+                 </div>
+                 <hr>
+              </div>
+           </div>
+     
+          <div class="box2">
+              <div class="box22">
+                  <div class="box2_top">
+                      站内通知          
+                   <img src="images/box2.png">
+                  </div>
+                  <hr>
+              </div> 
+          </div> 
+      </div> 
+   </div>
+
+</main>
+  <!-- =========主体结束======== -->
+     <!-- 作品管理 -->
+      <div class="box1 gl" v-if="gl">
+          <div class="box11">
+             <img src="images/box1.png">
+             <div class="work">
+                我的作品
+             </div>
+          </div>   
+       </div> 
+
+
+     <!-- 作者通知 -->
+     <div class="box3 tz" v-if="tz">
+       <div class="write_info">作者通知</div>
+       <ul>
+         <li>书籍相关</li>
+         <li>用户通知</li>
+         <li>系统公告</li>
+       </ul>
+       <img src="images/girl.png">
+       <br> <br> <br> <br>
+       <p>空空如也的说~</p>
+     </div>
+
+
+    <!-- 作者信息 -->
+     <div class="box3 xx" v-if="xx">
+       <div class="write_info">作者信息</div>
+       <img src="images/girl.png">
+       <p>您没有填过信息诶</p>
+       <p>为了方便编辑联系您，至少填一个嗷!</p>
+       <p class="p3"><span>创建作者信息</span></p>
+     </div>
+     <!-- 咨询编辑 -->
+    <div class="box1 gl bj" v-if="bj">
+          <div class="box11">
+             <img src="images/plus.png">
+             <div class="zixun">创建咨询</div>
+
+
+             <div class="work">
+                   <div class="content">
+                         <p class="p1">正确使用作者咨询的姿势</p>
+                         <p>1、我对书籍管理的使用有疑问诶！</p>
+                         <p>2、我的联系资料有变动怎么办？</p>
+                         <p>3、有新的征文活动，我的人设大纲该投到哪里啊？</p>
+                         <p class="p4">对应你遇到的问题，选择正确的分类提交咨询哦</p>
+                         <hr>
+                   </div>
+                历史咨询
+             </div>
+             <img src="images/girl.png">
+             <br> <br> <br> <br>
+            <p class="p3">还没有创建过咨询信息噢~</p>
+          </div>   
+    </div> 
+
+       <!-- 创建书籍  -->
+
+       <div class="create" v-if="create">
+           <div class="inner">
+             <div class="return">
+               <img src="images/return.PNG"><span>返回</span>
+             </div>
+             <h1>书籍信息</h1>
+             <p class="pp">创建新书</p>
+             <div class="input1">
+               <input class="input"  type="file"/>
+                <div class="cover">
+                  <i class="glyphicon glyphicon-plus-sign"></i>
+                  <h1>暂无卷封面</h1>
+                  <p>上传一张新的封面</p>
+                </div>
+              </div> 
+        
+             <div class="newbook">
+                   <p>进入轻之文库<span>站内特典</span><br>
+                   可下载我们预置的封面素材</p>
+             </div>
+             <div class="bookname">
+               <label>书名</label>
+               <input type="text" value="请输入书名">
+             </div>
+             <div class="introduct">
+                <label>介绍</label>
+                <textarea>请输入书籍简介</textarea>
+                <p>
+                   *简介会展示在新书的门面，好的简介可以吸引更多的读者，也方便编辑更快地审核您的作品┗|｀O′|┛ 嗷~~
+                </p>
+             </div>
+              <label>标签(最多3个)</label>
+              <div class="bookname">
+               <label>画师(没有无需填写)</label>
+               <input type="text" value="">
+             </div>
+           </div>
+           <button>创建书籍</button>
+       </div>
+ </div>
+
+  <!--=========底部开始========== -->
+  <footer>
+       <div class="word">
+         <p>轻之文库 版权所有 沪ICP备15020557号-1</p>
+         <p>Copyright © 2018 轻之文库(www.linovel.net)</p>
+       </div>
+
+       <div class="logo">
+         <img src="images/footer_logo.png">
+       </div>
+  </footer>
+  <!--==========底部结束=========-->
+</div>
+</div>
+</body>
+  <script type="text/javascript">
+    let app = new Vue({
+      el:"#myApp",
+      data:{
+        show:false,
+        sy:true,
+        gl:false,
+        tz:false,
+        bj:false,
+        xx:false,
+        create:false,
+      },
+      methods:{
+        shouye:function(){
+          // alert(123);
+          this.show=!this.show;
+          this.sy=true;
+          this.gl=false;
+          this.bj=false;
+          this.tz=false;
+          this.xx=false;
+          this.create=false;
+        },
+        gl1:function(){
+          this.show=!this.show;
+          this.sy=false;
+          this.gl=true;
+          this.bj=false;
+          this.tz=false;
+          this.xx=false;
+          this.create=false;
+        },
+        bj1:function(){
+          this.show=!this.show;
+          this.sy=false;
+          this.gl=false;
+          this.bj=true;
+          this.tz=false;
+          this.xx=false;
+          this.create=false;
+        },
+        tz1:function(){
+          this.show=!this.show;
+          this.sy=false;
+          this.gl=false;
+          this.bj=false;
+          this.tz=true;
+          this.xx=false;
+          this.create=false;
+        },
+        xx1:function(){
+          this.show=!this.show;
+          this.sy=false;
+          this.gl=false;
+          this.bj=false;
+          this.tz=false;
+          this.xx=true;
+          this.create=false;
+        },
+        create1:function(){
+          this.create=!this.create;
+          this.sy=false;
+          this.gl=false;
+          this.bj=false;
+          this.tz=false;
+          this.xx=false;
+        }
+     }
+
+    })
+  </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

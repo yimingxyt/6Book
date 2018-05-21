@@ -1,0 +1,61 @@
+/*================新人赏作品页面==================*/
+
+.head .head-img {
+    height: 300px;
+    background: url("../images/mobile-novel-list-bg.766324b.jpg") 50% no-repeat;
+}
+
+.contribute-list .mobile-block-tab .tab-btn{
+    display: inline-block;
+    width: 33.333%;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 14px;
+    color: #f6f7f8;
+}
+
+.contribute-list .mobile-block-tab .blue{
+    background: #07b3f3;
+}
+
+.contribute-list .mobile-block-tab .green{
+    background: #7ed321;
+}
+
+.contribute-list .mobile-block-tab .yellow{
+    background: #f6a623;
+}
+
+.long,.middle,.short{
+    display: none;
+}
+
+.long .work-item{
+    background: #4990e2;
+}
+
+.middle .work-item{
+    background: #65b112;
+}
+
+.short .work-item{
+    background: #de9110;
+}
+
+.middle .work-item:after{
+    border-color: #599c10;
+}
+
+.short .work-item:after{
+    border-color: #c37f0e;
+}
+
+.active{
+display: block;
+}
+
+
+

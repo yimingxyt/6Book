@@ -1,0 +1,310 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-decoration: none;
+}
+
+/*内容*/
+.content{
+	padding: 30px 10px;
+	/*border: 1px solid red;*/
+	box-sizing: border-box;
+}
+.wefare{
+	width: 100%;
+	height: 2.0855072rem;
+	border-radius: 8px;
+}
+.two_types{
+	width: 100%;
+	height: 2.56038647rem;
+	/*border: 1px solid red;*/
+	box-sizing: border-box;
+	margin-top: 1.6908212rem;
+	padding: 0.4830917847rem;
+	background: #eee;
+	text-align: center;
+	font-size: 13px;
+	line-height: 0.5314rem;
+	color: #666;
+}
+.commercial{
+    color: #ffaf88;
+}
+.artical{
+	color: #51caac;
+}
+/*签约制度*/
+.institution{
+    width: 100%;
+    margin-top: 0.9988rem;
+    /*border: 1px solid red;*/
+    border-bottom: 1px solid #eee;
+}
+.ins_content{
+	width: 100%;
+	margin-top: 0.7246rem;
+	/*border: 1px solid red;*/
+	/*text-align: center;*/
+}
+.artical_contribution{
+	color: #51caac;
+	/*text-align: center;*/
+	font-size: 30px;
+	text-align: center;
+}
+.p1{
+	margin-top: 0.3623rem;
+	text-align: center;
+}
+.p2{
+	text-align: center;
+}
+.text_money{
+	height: 7.5362rem;
+	margin: 0.48309rem;
+	text-align: center;
+}
+.first_cate{
+	color: #333;
+}
+.text_money li{
+	width: 50%;
+	height: 50%;
+	float: left;
+	/*border: 1px solid red;*/
+	/*text-align: center;*/
+}
+.text_money li img{
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+.text_money li{
+	color: #51caac;
+	margin-top: 0.3623rem;
+}
+.feature_list{
+	width: 100%;
+	margin-top: 1.0691rem;
+	/*border: 1px solid red;*/
+}
+.feature_list li{
+	margin-top: 0.72463768rem;
+	height: 5.6584rem;
+	/*border: 1px solid red;*/
+	font-size: 13px;
+	color: #333;
+	line-height: 2;
+	box-sizing: border-box;
+}
+
+.feature_list li h3{
+	font-weight: 500;
+    font-size: 0.5797rem;
+}
+.feature_list li .list_p1{
+	margin-top: 0.3623rem;
+}
+/*文库签约全勤稿酬*/
+.artical_ware_house{
+	width: 100%;
+	/*border: 1px solid red;*/
+	margin-top: 1.20772946rem;
+	
+}
+.sign_h2{
+    color: #51caac;
+    text-align: center;
+    font-size: 0.6666rem;
+    font-weight: 500;
+}
+.day_pay{
+	width: 100%;
+	height: 4.1062801rem;
+	/*border:1px dashed red;*/
+	margin-top: 0.72463768rem;
+	border-radius: 8px;
+	padding: 0.72463768rem;
+	box-sizing: border-box;
+	text-align: center;
+	border-radius: 8px;
+	/* padding: 30px 70px; */
+	border: 1px dashed #ccc;
+	position: relative;
+}
+/*二、作品奖励*/
+.artical_reward{
+	width: 100%;
+	/*height: 50rem;*/
+	/*border: 1px solid red;*/
+	margin-top: 1rem;
+}
+.artical_reward h2:nth-child(1){
+	font-size: 0.72463768rem;
+	font-weight: 500;
+
+}
+.artical_reward h2:nth-child(2){
+	margin-top: .72463rem;
+	font-size: 0.72463768rem;
+    color: #51caac;
+    font-weight: 500;
+}
+.artical_reward .art_p1{
+	margin-top: 0.3623rem;
+}
+.first_table{
+	width: 100%;
+	margin-top: 0.66666rem;
+	margin-bottom: 0.3333333rem;
+	/*height: 6.3768rem;*/
+	box-sizing: border-box;
+}
+.first_table tbody tr{
+	width: 100%;
+	height: 0.633333rem;
+	background: #eee;
+}
+.first_table tr td{
+	height: 1.1111rem;
+	
+	/*padding: 0.24154589rem 0.96666rem;*/
+}
+.reward{
+	color: #333;
+	line-height: 1.5;
+}
+.reward>h2:nth-child(1){
+	margin-top: .72463rem;
+	font-size: 0.72463768rem;
+    color: #51caac;
+    font-weight: 500;
+}
+.reward>p:nth-child(2){
+	margin-top: 0.3623rem;
+}
+.reward_bom{
+	width: 100%;
+	height: 1px;
+	margin-top: 1rem;
+	border-bottom: 1px solid #eee;
+
+}
+/*续签奖励*/
+.continue_sign{
+	line-height: 1.5;
+}
+.continue_sign>h2:nth-child(1){
+	margin-top: .72463rem;
+	font-size: 0.72463768rem;
+    color: #51caac;
+    font-weight: 500;
+}
+.continue_sign>p:nth-child(2){
+	margin-top: 0.3623rem;
+	
+	color: #333;
+	font-weight: 500;
+}
+.atendtion{
+	margin-top: 0.3623rem;
+
+}
+.continue_sign small{
+	color: #666;
+}
+/*分成*/
+.divided{
+	margin-top: 0.96666rem;
+	line-height: 1.5;
+	color: #333;
+}
+.divided>h2:nth-child(1){
+	margin-top: .72463rem;
+	font-size: 0.72463768rem;
+    color: #51caac;
+    font-weight: 500;
+}
+.divided>p:nth-child(2){
+	margin-top: 0.3623rem;
+}
+/*作品签约方法 */
+.sign_method,.not_fit{
+	width: 100%;
+	height: 5.3140096rem;
+	margin-top: 0.8888rem;
+	border:1px dashed #ccc;
+	padding: 0.7246rem;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 13px;
+	color: #333;
+	line-height: 1.6;
+	border-radius: 8px;
+}
+.sign_p1{
+	margin:0.3333rem 0;
+}
+/*评论*/
+.comment{
+	width:95%;
+	height: 3.3816rem;
+	margin: 0.555555rem auto;
+	border-radius: 8px;
+	/*border: 1px solid red;*/
+	box-sizing: border-box;	
+	position: relative;
+
+}
+.btm_com{
+	width: 100%;
+	height: 100%;
+}
+.btm_com textarea{
+	border: 0px solid transparent;
+	width: 100%;
+	height: 2.333333rem;
+}
+.to_com{
+	width: 100%;
+	height: 1rem;
+	/*border:1px solid red;*/
+	border-radius: 8px;
+}
+.to_com  a img{
+	width: 0.772946rem;
+	height: 0.772946rem;
+}
+.to_com button{
+	width: 1.9666rem;
+	height: 0.911111111rem;
+    background-color: #00a786;
+    color: #fff;
+    border: 0px solid transparent;
+    float: right;
+    border-radius: 8px;
+}
+.login{
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-color: #ccc;
+	opacity: 0.8;
+	/*border: 1px solid red;	*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	border-radius: 8px;
+	padding: 0.7269rem;
+	box-sizing: border-box;
+
+}
+.login .a1{
+	color: blue;
+}
+.login .a2{
+	color: red;
+}

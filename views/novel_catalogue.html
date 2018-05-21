@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>小说目录</title>
+	<link rel="stylesheet" type="text/css" href="./css/novel_in.css">
+	<link rel="stylesheet" type="text/css" href="./css/novel_catalogue.css">
+	<link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+	<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="lib/vue.js"></script>
+</head>
+<body>
+	<div class="catalog_page" id="myList">
+		<div class="close_box">
+			<a href="./novel_info" class="close_back">关闭目录</a>
+		</div>
+		<div class="section_title">
+			<b>目录</b>
+			<span class="info">共10卷104章 {{novel_info[8].number}}</span>
+		</div>
+		<div class="catalog_list">
+
+			<div class="volume_wrp" v-for="x in novel_info">
+				<div class="volume1">
+					<div class="cover">
+						<a href="#">
+							<img src="images/novel_info_bg.jpg" alt="">
+						</a>
+					</div>
+					<div class="volume_info">
+						<h2 class="title">{{x.catalogue_title}}</h2>
+						<div class="desc">
+							{{x.intro}}
+						</div>
+					</div>
+				</div>
+				<ul class="chapter_list">
+					<li>序章</li>
+					<li v-for="x in novel_info">
+						{{x.catalogue_title}}
+					</li>
+					<!-- <li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li> -->
+				</ul>
+			</div>
+
+			<!-- <div class="volume_wrp">
+				<div class="volume1">
+					<div class="cover">
+						<a href="#">
+							<img src="images/novel_info_bg.jpg" alt="">
+						</a>
+					</div>
+					<div class="volume_info">
+						<h2 class="title">第10卷 第十卷</h2>
+						<div class="desc">
+							劫狱逃亡的余韵未散，霜月学园为逃亡者们提供庇护之地。人类之国的战争打响，帝国的魔爪伸向相隔海峡的逃亡者。远古遗产“尤克特拉希尔”为逃亡者们献上单程机票，海雾舰队扬帆起航。她在无法回头的道路上渐行渐远，孤独女王的心愿无人可诉。
+						</div>
+					</div>
+				</div>
+				<ul class="chapter_list">
+					<li>序章</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+					<li>第九章 龙虾四组舞（十四）</li>
+				</ul>
+			</div> -->
+		</div>
+	</div>
+<script type="text/javascript">
+	let myList = new Vue({
+        el:'#myList',
+        data:{
+          novel_info: [
+           
+            ],
+        },
+
+        mounted:function(){
+            let that = this;
+            $.ajax({
+                type:'get',
+                url:'/api/getList2',
+                dataType:'json',
+                success:function(json){
+                    // console.log(json);
+                    that.novel_info = json.result;
+                    // console.log(that.novel_info);
+                }
+            });
+        }
+     }); 
+</script>
+</body>
+</html>

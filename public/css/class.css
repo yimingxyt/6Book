@@ -1,0 +1,263 @@
+/* =====================================公共样式==============================*/
+*{margin:0;padding:0;}
+html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td { margin: 0; padding: 0; }
+img { border: 0 none; vertical-align: center; }
+ul, li { list-style-type: none; margin:0px; padding:0px;}
+h1, h2, h3, h4, h5, h6 { font-size: 14px; }
+body, input, select, button, textarea { font-size: 12px; font-family:"黑体";  }
+button { cursor: pointer; }
+i, em, cite { font-style: normal; }
+aside section,.body{display:block; width:1000px; margin:0 auto;}
+a, a:link { color: #000; text-decoration: none; }/*设置a标签基本样式与伪类选择器设置*/
+a:visited {}
+a:active, a:hover { text-decoration: none; color:#d00000; }
+a:focus { outline: none; } 
+.orange { color:#F26E01;}
+.clear {
+	clear:both;
+}
+/*=====================头部样式=====================*/
+
+
+
+/*==========================主体开始==========================*/
+
+body{
+   background: #F5F5F5;
+   min-width: 400px;
+}
+/*=====A====*/
+.fA{
+	/*border: 1px solid red;*/
+	margin-top: 20px;
+	height: 10vw;
+	background: #F5F5F5;
+}
+
+.fA i{
+	font-size: 4.5vw;
+	border-radius: 2px;
+	color: #00a786;
+} 
+.fA-L h4{
+	float: left;
+	font-size: 16px;
+	font-weight: 700;
+	height: 5.5vw;
+	line-height: 5.5vw;
+}
+
+
+.fA-R{
+	float: right;
+}
+
+.fA a{
+	font-size: 4vw;
+	border-radius: 5.5px;
+	color: #00a786;
+} 
+
+/*.a1{
+	color: #333;
+}*/
+.fA-R .active{
+	color: #ccc;
+}
+/*=====B====*/
+.fB ul{
+	/*border: 1px solid red;*/
+}
+.fB ul li {
+	border: 1px solid #ccc;
+	float: left;
+	color: #333;
+	padding: 6px 20px;
+	margin-right: 15px;
+	margin-top: 10px;
+    border-radius: 17px;
+    background: #fff;
+}
+.fB ul li a{
+	font-size: 14px;
+	color: #333;
+}
+.fB ul .bg{
+	background-color: #00a786;
+	color: #fff;
+}
+.fB ul .bg a{
+	color: #fff;
+}
+/*=========*/
+.fC{
+	display: none;
+	margin-top: 25px;
+	/*border: 1px solid red;*/
+	margin-left: -12px;
+	font-size: 14px;
+	color: #333;
+	text-align: center;
+}
+.fC a{
+	display: block;
+	background: #fff;
+	margin-top: 10px;
+}
+.fC img{
+    width: 100%;
+    height: 100%;
+    padding:5px 15px;
+    margin-top: 5px;
+    background: #fff;
+}
+.fC p{
+	height: 62px;
+	width: 140px;
+	margin-left: 20px;
+}
+.clear{
+	clear: both;
+
+}
+/*=========C1========*/
+.fC2{
+	padding-top: 30px;
+	display: block;
+}
+ .s1{
+	color: #00a786;
+}
+.fC2 .list{
+	width: 100%;
+	height: 150px;
+}
+.fC2 img{
+	width: 100px;
+	height: 150px;
+	float: left;
+}
+.fC2 .artical{
+	float: left;
+	width: 65%;
+	height: 180px;
+	overflow: hidden;
+	margin-left: 20px;
+}
+.fC2 .title{
+	height: 30px;
+	line-height: 30px;
+	font-size: 20px;
+	color: #333;
+	overflow: hidden;
+
+}
+.fC2 .content{
+
+	color: grey;
+	font-size: 16px;
+}
+.fC2 .intro{
+	margin-top: 12px;
+	height: 40px;
+	overflow: hidden;
+	/*border: 1px solid red;*/
+}
+
+.fC2 .update{
+	margin-top: 12px;
+}
+hr{
+	border: 0.5px solid #333;
+}
+/*=========D=========*/
+.fD{
+    display: inline-block;
+}
+
+.fD li{
+	float: left;
+	border: 1px solid #ccc;
+	padding:7px 15px; 
+	margin: 10px 5px;
+	border-radius: 7px;
+}
+.fD ul .bg{
+	background-color: #00a786;
+	color: #fff;
+}
+.fD ul .bg a{
+	color: #fff;
+}
+.fD ul li a{
+	display: block;
+	color: #00a786;
+	font-size: 14px;
+
+}
+
+
+/*=================底部开始===================*/
+/*footer*/
+footer{
+  margin:100px 0 0 50px;
+  font-size: 2.4em;
+  }
+  footer li{
+    color:#666;
+    line-height: 80px;
+  }
+  footer .us ul{
+    float:left;
+  }
+  footer div li:nth-of-type(1){
+    font-weight:bold;
+    color:black;
+  }
+  .left li{
+    float:left;
+  }
+  .foot-logo span{
+    display: block;
+    width:280px;height:120px;
+    margin:50px 0 0 35%;
+    background: url(../images/logo_gray.png) no-repeat;
+    background-size:100%;
+  }
+  .foot-logo p{
+    color:#888;
+    text-align: center;
+  }
+  .friend ul li{
+    line-height:100px;
+    margin:0 0 0 30px;
+    float:left;
+  }
+  .friend ul li:nth-of-type(1){
+    font-weight:700;
+    color:#888;
+  }
+  .fixed{
+    position: fixed;
+    bottom:0px;
+    height:150px;width:100%;
+    background: rgba(0,167,133,.95);
+  }
+  .fixed .gril{
+    margin:-125px 0 0 60px;
+  }
+  .fixed span{
+    color:white;
+    font-weight: bold;
+    font-size: 2.4em;
+    margin:40px 0 0 0;
+  }
+  .fixed button{
+    width: 300px;height:80px;
+    background:white;
+    font-weight: bold;
+    font-size: 2.4em;
+    color:#00A786;
+    margin:40px 0 0 0;
+    border-radius:10px;
+  }

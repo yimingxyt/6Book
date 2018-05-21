@@ -1,0 +1,76 @@
+/*================新人赏规则页面==================*/
+
+.head .head-img {
+    height: 300px;
+    background: url("../images/mobile-rule-bg.aa98bde.jpg") 50% no-repeat;
+}
+
+.mobile-block{
+    margin-bottom: 20px;
+}
+
+.mobile-block-title{
+    background: url("../images/newprice_title_bg.png") no-repeat;
+    background-size: contain;
+    padding: 2px 15px 1px;
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    line-height: 30px;
+    top: -13px;
+}
+
+.main .line{
+    width: 100%;
+    height: 2px;
+    margin-top: -13px;
+    background: #1ac0a6;
+    display: block;
+}
+
+.mobile-block p{
+    padding: 0 15px;
+    margin: 3px auto;
+    letter-spacing: 1px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.mobile-block ol{
+    padding: 0 15px 0 30px;
+}
+
+.mobile-block ol li{
+    font-size:14px;
+    letter-spacing: 1px;
+    list-style-type: decimal;
+    line-height: 30px;
+}
+
+.mobile-block .mobile-block-body h3{
+    color: #1ac0a6;
+    font-size:18px;
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.mobile-block ul{
+    padding: 0 15px 0 30px;
+}
+
+.mobile-block ul li{
+    letter-spacing: 1px;
+    font-size: 14px;
+    list-style-type: disc;
+}
+
+.mobile-block ul li b{
+    padding-right: 10px;
+    display: inline-block;
+    color: #1ac0a6;
+    font-weight: bold;
+}
+
+.mobile-block ul li span{
+    letter-spacing: 1px;
+}

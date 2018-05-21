@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>sort</title>
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/sort.css">
+  <script type="text/javascript" src="./lib/jquery-3.2.1.min.js"></script>
+  <script src="./lib/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/sort.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+
+<!--=================头部开始==================-->
+<div id="xx">
+   <header>
+        <!-- logo及隐藏菜单按钮 -->
+        <div class="logo">
+            <a href="index" class="logo-img"></a>
+            <button class="dowm-menu" @click="animate()">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- 隐藏菜单 -->
+        <div class="menu" v-if="show">
+            <ul class="nav navbar-nav">
+                <li><a href="./class">全部分类</a></li>
+                <li><a href="./sort">排行榜<span class="new"></span></a></li>
+                <li>
+                    <form action="/search/" id="nav_search_form" class="navbar-form nav-search-form" role="search" method="GET">
+                        <div class="nav-search-bar">
+                            <input type="text" class="form-control" name="kw" id="nav_search_ipt" placeholder="你好！小丑小姐" autocomplete="off">
+                            <button class="btn btn-default" type="submit"></button>
+                        </div>
+                    </form>
+                </li>
+                <li class="jianfan"><a name="StranLink" id="StranLink">简繁切换</a></li>
+                <li v-show="login" class="logined logined1"><span></span><a href="./person">热烈欢迎:  {{user_info.username}}同志</a></li>
+                <!-- <li v-show="login" class="logined logined1"><span></span><a href="./person">个人中心</a></li> -->
+                <li v-show="login" class="logined logined2"><span></span>收藏夹</li>
+                <li v-show="login" v-if="login" class="logined logined3" @click="tuichu()"><span></span>退出登录</li>
+                <li v-show="!login"v-if="!login"><a href="/login">登录</a></li>
+                <li v-show="!login"><a href="/create"></a>注册</li>
+                <li>
+                    <a href="/center" class="btn btn-primary submit-novel">
+                        <i class="icon-edit"></i>
+                        <span class="nav-label">投稿</span>
+                        <span class="nav-label">{{user_info.username}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--隐藏菜单end -->
+    </header>
+</div>
+<!--=================头部结束===================-->
+
+<div id="myApp">
+
+
+<!-- ================主体开始==================== -->
+<main>
+  <div class="col-sm-12 col-md-12">
+     <!-- A -->
+     <div class="fA">
+       <div class="fA-L">
+           <h4 class="title">
+               <i class="glyphicon glyphicon-stop"></i>
+               排行榜
+           </h4>
+           <div class="clear"></div>
+       </div>
+      </div>
+      <!-- B -->
+      <div class="fB row">
+          <ul>
+            <li v-for="x in list2" :id="x.id" class="No1">
+                <a>
+                <div class="L">
+                  <span class="p0">{{x.rank}}</span>
+                  <p class="p1">{{x.title}}</p>
+                  <p class="p2">{{x.write}}</p> 
+                </div>                       
+                  <div class="R">
+                  <img :src="x.src">
+                  </div>
+                  <div class="clear"></div> 
+                </a>
+
+                 <ul >
+                  <li v-for="y in list3" v-if="x.id == y.id">
+                    <a href="#">
+                     <span class="s1">{{y.rank}}</span>
+                    <span class="s2">{{y.title}}</span>
+                    <span class="s3">{{y.write}}</span>
+                  </a>
+                  </li>
+                </ul>
+                <hr>
+          </li>          
+        </ul>
+     </div>
+   </div>
+ </main>
+    <!-- bot -->
+   <div class="bot">
+      <div class="row">
+          <a v-for="a in list" :id="a.id" :href="a.id" class="fix col-xs-3" @click="animate($event)">{{a.title}}</a>
+      </div>
+   </div>
+   <div class="clear"></div>
+
+   <div id="u"></div>
+  <!-- ==================主体结束=============== -->
+
+  <!--==================底部开始==================== -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="link-grid row">
+                        <div class="grid col-xs-4">
+                            <p class="link-grid-title"><b>网站概要</b></p>
+                            <p><a href="#">关于我们</a></p>
+                            <p><a href="#">联系我们</a></p>
+                            <p><a href="#">加入我们</a></p>
+                            <p><a href="#">免责声明</a></p></div>
+                        <div class="grid col-xs-4"><p class="link-grid-title"><b>作者服务</b></p>
+                            <p><a href="#">联系编辑</a></p>
+                            <p><a href="#">福利与签约</a></p></div>
+                        <div class="grid col-xs-4"><p class="link-grid-title"><b>轻之文库</b></p>
+                            <p><a href="#">文库精选</a></p>
+                            <p><a href="#">官方正版</a></p>
+                            <p><a href="#">轻小说文库</a></p></div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="friend-link">
+                        <p class="friend-link-title"><b>首席合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">米画师</a>
+                            <a target="_blank" href="#">MissEvan_M站</a>
+                            <a target="_blank" href="#">网易GACHA</a>
+                            <a target="_blank" href="#">幻音</a>
+                            <a target="_blank" href="#">萌导航</a>
+                            <a target="_blank" href="#">2144游戏网</a>
+                        </p>
+                        <p class="friend-link-title"><b>媒体合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">和邪社</a>
+                            <a target="_blank" href="#">ACGdoge</a>
+                            <a target="_blank" href="#">第一弹</a>
+                            <a target="_blank" href="#">178动漫</a>
+                        </p>
+                        <p class="friend-link-title"><b>游戏合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">少女咖啡枪</a>
+                            <a target="_blank" href="#">诺诺来自异世界</a>
+                        </p>
+                    </div>
+                    <ul class="pr-link">
+                        <li><b>友情链接</b></li>
+                        <li><a href="#">喵特漫展</a></li>
+                        <li><a href="#">画萌网</a></li>
+                        <li><a href="#">胖次网</a></li>
+                        <li><a href="#">CnGal</a></li>
+                        <li><a href="#">Cooi社区</a></li>
+                        <li><a href="#">萌玩网</a></li>
+                        <li><a href="#">源音塘</a></li>
+                        <li><a href="#">漫漫漫画</a></li>
+                        <li><a href="#">翼萌动漫</a></li>
+                        <li><a href="#">柚栖</a></li>
+                        <li><a href="#">大角虫漫画</a></li>
+                        <li><a href="#">汇漫网</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <br><img src="./images/logo.png" class="brand-image">
+            <p class="brand">Copyright 2017 6Book. All Rights Reserved.</p>
+        </div>
+    </div>
+  <!--===================底部结束=================-->
+</div>
+<script type="text/javascript" src="./js/index.js"></script>
+
+</body>
+<script type="text/javascript">
+ let app = new Vue({
+    el:'#myApp',
+    data:{
+      list2:[
+       // {id:'ua',
+       // rank:'重推月榜NO1',
+       // title:'拖行棺木的芬里尔',
+       // write:'慕之情',
+       // src:'images/1.jpg'
+       // },
+
+       // {
+       //   id:'ub',
+       //   rank:'重推周榜NO1',
+       //   title:'圣瓦尔基里见习特务备忘录',
+       //   write:'南尼喜嘛斯嘎',
+       //   src:'images/1.jpg'
+       // },
+
+       // {
+       //   id:'uc',
+       //   rank:'重推新书榜NO1',
+       //   title:'魔王也要谈恋爱！',
+       //   write:'妹控の魔王',
+       //   src:'images/1.jpg'
+       // },
+
+       // {
+       //    id:'ud',
+       //    rank:'佳作月榜NO1',
+       //    title:'魔王也要谈恋爱!',
+       //    write:'妹控の魔王',
+       //    src:'images/1.jpg'
+       //  },
+
+      ],
+
+      list3:[
+        // // a
+        // {id:'ua',rank:'2',title:'无尽白银之城',write:'沐之晴'},
+        // {id:'ua',rank:'3',title:'魔王也要谈恋爱!',write:'妹控の魔王'},
+        // {id:'ua',rank:'4',title:'多角恋爱报告书',write:'奇迹队长'},
+        // {id:'ua',rank:'5',title:'City trackline S&B 公车铁道战线',write:'雪色三棱镜'},
+        // {id:'ua',rank:'6',title:'道家小姐也想成为魔法少女？',write:'趴在叶子上的茧'},
+        // {id:'ua',rank:'7',title:'终焉之境的降灵师',write:'岚影'},
+        // {id:'ua',rank:'8',title:'空响少女与守护骑士团',write:'魔王嘉儿喵'},
+        // {id:'ua',rank:'9',title:'拖行棺木的芬里尔',write:'雨无痕泪满衣'},
+        // {id:'ua',rank:'10',title:'苍之丽影的回响',write:'暮雨夜风'},
+        // // b
+        // {id:'ub',rank:'2',title:'无尽白银之城',write:'沐之晴'},
+        // {id:'ub',rank:'3',title:'魔王也要谈恋爱!',write:'妹控の魔王'},
+        // {id:'ub',rank:'4',title:'修个妹的仙',write:'7zip'},
+        // {id:'ub',rank:'5',title:'多角恋报告书',write:'奇迹队长'},
+        // {id:'ub',rank:'6',title:'我的便携式游戏女友',write:'灯雨黄昏'},
+        // {id:'ub',rank:'7',title:'拖行棺木的芬里尔',write:'雨无痕泪满衣'},
+        // {id:'ub',rank:'8',title:'空响少女与守护骑士团',write:'魔王嘉儿喵'},
+        // {id:'ub',rank:'9',title:'City trackline S&B 公车铁道战线',write:'雪色三棱镜'},
+        // {id:'ub',rank:'10',title:'法师涅密斯游记',write:'南华'},
+        // // c
+        // {id:'uc',rank:'2',title:'恋爱裁定官',write:'老槐树'},
+        // {id:'uc',rank:'3',title:'有异装癖的美少女你也喜欢吗？',write:'活动人偶'},
+        // {id:'uc',rank:'4',title:'上学日尸横遍野',write:'小南'},
+        // {id:'uc',rank:'5',title:'白澜的贤者大人',write:'限定'},
+        // {id:'uc',rank:'6',title:'幻想少女与魔王',write:'艾洛沙华'},
+        // {id:'uc',rank:'7',title:'修个妹的仙',write:'7zip'},
+        // {id:'uc',rank:'8',title:'空响少女与守护骑士团',write:'魔王嘉儿喵'},
+        // {id:'uc',rank:'9',title:'出发，从菊花盛放地起始欧派征讨',write:'地狱猹'},
+        // {id:'uc',rank:'10',title:'旧书店的改革日常',write:'空幻'},
+        // // d
+        // {id:'ud',rank:'2',title:'那场雨下的约定',write:'三血虫'},
+        // {id:'ud',rank:'3',title:'魔女与人偶许下誓言!',write:'极夜'},
+        // {id:'ud',rank:'4',title:'那个萝莉有点凶',write:'甜甜的桃子酱'},
+        // {id:'ud',rank:'5',title:'没有妹妹的我怎么想都是世界的错',write:'五河川'},
+        // {id:'ud',rank:'6',title:'骑士☆北极星',write:'七阕白'},
+        // {id:'ud',rank:'7',title:'女神战争编年史',write:'幽幻山'},
+        // {id:'ud',rank:'8',title:'三夏',write:'Snow'},
+        // {id:'ud',rank:'9',title:'上学日尸横遍野',write:'小南'},
+        // {id:'ud',rank:'10',title:'前勇者的我现在在魔王的手下当走狗',write:'疯狂的板栗'},
+               
+       ],
+      list:[
+        // '重推月榜 ','重推周榜','重推新书榜','佳作月榜',
+        // '佳作周榜','佳作新书榜','月票月榜','月票周榜',
+        // '月票新书榜','轻币月榜','轻币周榜','轻币新书榜',
+        // '墨水月榜','墨水周榜','墨水新书榜','应援月榜',
+        // '应援周榜','应援新书榜',
+        {id:'#1',title:'重推月榜'},
+        {id:'#2',title:'重推周榜'},
+        {id:'#3',title:'重推新书榜'},
+        {id:'#4',title:'佳作月榜'},
+      ],
+
+    },
+    methods:{
+      animate:function(e){
+        // alert(123);
+        
+        $('#u').css('background','pink');
+        setTimeout(function(){
+              $('#u').css('background','');
+        },1000)
+        // e.target.style.backgroundColor = '#6495CC';
+        
+      }
+    }
+ });
+ function getRank(){
+    $.ajax({
+      type:'get',
+      url:'/api/getRank',
+      dataType:'json',
+      success:function(json){
+        // console.log(json);
+        app.list2 = json.result;
+      }
+    });
+    $.ajax({
+      type:'get',
+      url:'/api/getRank2',
+      dataType:'json',
+      success:function(json){
+        // console.log(json);
+        app.list3 = json.result;
+      }
+    });
+ }
+ getRank();
+</script>
+</html>
+            

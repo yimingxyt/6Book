@@ -1,0 +1,104 @@
+body{
+	background-color: #f5f5f5;
+}
+ul,li{
+	list-style: none;
+}
+a{
+	color: #00a786;
+}
+
+.nav li a{
+	color: #000;
+}
+
+a:active, a:hover, a:focus{
+	text-decoration: none;
+}
+h1{
+	margin-top: 10px;
+	font-size: 30px;
+}
+.clear{
+	clear: both;
+}
+.title{
+	color: #00a786;
+	font-size: 36px;
+}
+.main .tabs{
+	padding: 0;
+	margin-top: 25px;
+}
+.main .tabs li a{
+	float: left;
+	color: #00a786;
+	display: block;
+	padding: 10px 15px;
+}
+.main .tabs .active a{
+	background-color: #00a786;
+	color: #fff;
+}
+.tab_container{
+	margin-top: 22px;
+}
+.tab_container .input{
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	margin-bottom: 15px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	color: #555;
+	border: 1px solid #ccc;
+}
+.tab_container .input:focus,.tab_container .button:focus,.tab_container .button1:focus{
+	border-color: #00a786;
+	outline: 0;
+	box-shadow :inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0,167,134,.6);
+}
+.tab_container .checkbox{
+	/*width: 150%;*/
+	height: 15px;
+	float: left;
+	border: 1px solid #ccc;
+	/*left: -250px;*/
+	position: relative;
+	margin-bottom: 13px;
+}
+.tab_container label{
+	font-size: 14px;
+	position: absolute;
+	left: 30px;
+}
+.tab_container label .text{
+	color: darkgrey;
+}
+.tab_container .button{
+	width: 100%;
+	padding: 11px 22px;
+	background-color: #00a786;
+	color: #fff;
+	border-radius: 2px;
+	border: 1px solid #008e72;
+}
+.tab_container .button1{
+	width: 100%;
+	padding: 11px 22px;
+	background-color: #fff;
+	color: #00a786;
+	border-radius: 2px;
+	border: 1px solid #008e72;
+	margin-bottom: 17px;
+}
+.tab_container .forget{
+	color: #00a786;
+}
+.tab_container .icon{
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+.tab_container .icon span img{
+	width: 32px;
+}

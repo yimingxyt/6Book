@@ -1,0 +1,414 @@
+/* =====================================公共样式==============================*/
+*{margin:0;padding:0;}
+html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td { margin: 0; padding: 0; }
+img { border: 0 none; vertical-align: center; }
+ul, li { list-style-type: none; margin:0px; padding:0px;}
+h1, h2, h3, h4, h5, h6 { font-size: 14px; }
+body, input, select, button, textarea { font-size: 12px; font-family:"黑体";  }
+button { cursor: pointer; }
+i, em, cite { font-style: normal; }
+aside section,.body{display:block; width:1000px; margin:0 auto;}
+a, a:link { color: #000; text-decoration: none; }/*设置a标签基本样式与伪类选择器设置*/
+a:visited {}
+a:active, a:hover { text-decoration: none; color:#d00000; }
+a:focus { outline: none; } 
+.orange { color:#F26E01;}
+.clear {
+	clear:both;
+}
+:focus{
+	outline-color: #00a786; 
+	/*border-background:#00a786; */
+}
+/*=====================主体样式=====================*/
+body{
+
+   background: #F5F5F5;
+   /*min-width: 400px; */
+}
+#app{
+	width: 100vw;
+	overflow: hidden;
+}
+/*head*/
+header{
+	background: #fff;
+	height: 130px;
+	margin-bottom: 20px;
+}
+header img{
+	display: block;
+	margin: 20px 0 0 30px;
+	height: 45px;
+}
+.head_R1{
+	margin-top: 30px;
+}
+.head_R1 a{
+	color: #fff;
+    background:#00a786; 
+    padding: 7px 22px;
+    border-radius: 15px;
+    text-align: center;
+}
+.r2{
+	margin-top: 10px;
+}
+ul{
+	padding-left: 15px;
+}
+nav li{
+	float: left;
+}
+.r2 nav ul li>a{
+	color: #666;
+	display: block;
+	font-size: 15px; 
+	padding: 5px 0 0 3px;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+.to_old{
+  /*border: 1px solid red;*/
+  margin-top: 20px;
+  /*float: left;*/
+  margin-left: -25px;
+}
+.to_old a{
+	border: 1px solid #00a786;
+	margin:11px;
+	width: 100px;
+	padding:10px 20px;
+    font-size: 16px;
+    color:#00a786;
+    border-radius: 20px;
+}
+/*main*/
+main .box{
+	margin-top: -20px;
+	/*height: 500px;*/
+    /*border: 1px solid red;*/
+}
+
+.img{
+	height: 43px;
+	width: 100%;
+	background:#00a786; 
+}
+.img_L{
+	height: 100%;
+	margin-left: 30px;
+}
+.img_R{
+	height: 50%;
+	float: right;
+	margin-right: 5vw;
+	margin-top: 2.5vw;
+}
+/*隐藏菜单*/
+.box ul{
+	width: 100%;
+	height: 330px;
+	background: #fff;
+}
+.box ul li{
+	/*margin-top: 15px;*/
+	padding-top: 20px;
+	height: 55px;
+	margin-left: 20px;
+}
+.box ul li span{
+	font-size: 12px;
+	color: #666;
+	margin-left: 20px;
+}
+/*隐藏菜单结束*/
+/**/
+.box1{
+	margin: 20px auto;
+	width: 90vw;
+	height: 264px;
+	background: #fff;
+	position: relative;
+}
+.box1 .box11{
+	border-radius: 5px;
+	position: absolute;
+	background: #F7F7F7;
+	margin:5vw 7vw 5vw 7vw;
+	width: 80vw;
+	height: 202px;
+	border: 1px dashed #ccc;
+}
+.box1 img{
+	margin: 10vw auto;
+	display: block;
+}
+.box11 #plus{
+	margin-left: 160px;
+}
+.box2{
+	margin: 20px auto;
+	width: 90vw;
+	height: 478px;
+	background: #fff;
+}
+.box2_top{
+	font-size: 20px;
+	font-weight: 700;
+	color: #00a786;
+	position: relative;
+
+}
+.box22{
+	position: absolute;
+    width: 80%;
+	height: 70px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.box2 img{
+	float: right;
+}
+/*footer*/
+footer{
+	width: 100%;
+	height: 135px;
+}
+.word p{
+	font-size: 14px;
+	text-align: center;
+	color: #999;
+}
+
+footer img{
+	display: block;
+	margin: 20px auto;
+}
+
+/*作者通知*/
+.box3{
+	position: relative;
+	margin: 20px auto;
+	width: 90vw;
+	height: 678px;
+	background: #fff;
+}
+.write_info{
+	width: 100%;
+	height: 50px;
+	margin: 26px 22px;
+	position: absolute;
+	font-size: 18px;
+	font-weight: 700;
+	color: #00a786;
+}
+.box3 img{
+	position: relative;
+	margin:  0 auto;
+	display: block;
+	padding-top: 260px;
+}
+.box3 p{
+	font-size: 16px;
+	color: #ccc;
+	text-align: center;
+}
+.box3 .p3{
+	margin-top: 30px;
+	color:  #00a786;;
+	font-size: 14px;
+	border-radius: 18px;
+}
+.box3 .p3 span{
+    border: 1px solid  #00a786;
+    padding:10px;
+	border-radius: 18px;
+}
+.box3 ul{
+	width: 100%;
+	position: absolute;
+	margin:100px 0 0 0;
+    color:  #00a786;
+    font-size: 14px;
+}
+.box3 ul li{
+	border:1px solid  #00a786;
+	margin:15px;
+	padding: 5px 30px;
+	border-radius: 15px;
+	text-align: center;
+}
+.box3 ul li:nth-of-type(1){
+	background:#00a786;
+	color:#fff; 
+}
+
+.gl{
+	height: 945px;
+}
+.gl .work{
+	font-size: 18px;
+	font-weight: 700;
+	color:#00a786; 
+	margin-top: 100px;
+}
+.bj{
+	height: 1070px;
+}
+.box11 .zixun{
+	font-size: 16px;
+	color: #ccc;
+	text-align: center;
+}
+.box1 .p3{
+	font-size: 16px;
+	color: #ccc;
+	text-align: center;
+}
+.content p{
+	color:#2c3e50;
+	font-size: 14px;
+	text-align: center;
+}
+.content p{
+	color:#000;
+	font-size: 18px;
+	text-align: center;
+}
+.content p{
+	color:#2c3e50;
+	font-size: 14px;
+	text-align: center;
+	margin-top: 10px;
+	opacity: 0.7
+}
+
+.content .p1{
+	color:#2c3e50;
+	font-size: 20px;
+	text-align: center;
+	opacity: 0.9
+
+}
+.content .p4{
+	color: #00a786;
+	margin-top: 15px;
+}
+/*创建书籍*/
+.create{
+	margin: 20px auto;
+	width: 90vw;
+	background: #fff;
+	position: relative;
+	z-index: 5;
+}
+.inner{
+	margin: 20px auto;
+	padding-top: 1px;
+	width: 75vw;
+}
+.return{
+   color:#00a786;
+   font-size: 20px;
+   font-weight: 700;
+   margin-top: 50px;
+}
+.inner h1{
+	font-size: 30px;
+	padding-top: 50px;
+}
+.inner .pp{
+	font-size: 18px;
+	color:#00a786;
+	padding-top: 20px;
+	margin-bottom: 30px;
+}
+.create .inner .input{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: block;
+	width: 100%;
+	height: 398px;
+	opacity: 0;
+}
+.create .inner .input1{
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 398px;
+	background: #f7f7f7;
+}
+.cover{
+	padding-top: 30%;
+	text-align: center;
+
+}
+.cover i{
+	font-size: 60px;
+	color:#CACACA;
+}
+.cover h1{
+	margin-top: -35px;
+   	font-size: 15px;
+	color: #999;
+}
+.cover p{
+    font-size: 12px;
+    margin-top: 5px;
+	color: #999;
+}
+.create .newbook {
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+.create .newbook p{
+  color: #999;
+  text-align: center;
+  font-size:15px; 
+}
+.create .newbook p span{
+   color:#00a786;
+}
+.create label{
+	display: block;
+	/*border: 1px solid red;*/
+	color: #666;
+	text-align: center;
+	font-size: 18px;
+	padding: 15px;
+}
+.create input{
+	border:1px solid #eee;
+	width: 100%;
+	height: 54px;
+	background: #f7f7f7;
+	border-radius: 5px;
+	color: #999;
+	font-size: 18px;
+	padding: 15px;
+}
+.create textarea{
+	border:1px solid #eee;
+	width: 100%;
+	height: 300px;
+	background: #f7f7f7;
+	border-radius: 5px;
+	color: #999;
+	font-size: 18px;
+	padding: 15px;
+}
+.create button{
+	border:1px solid green;
+	width: 100%;
+	height: 60px;
+	background: #00a786;
+	margin-bottom: -10px;
+	font-size: 16px;
+	color:#fff; 
+}
+.introduct p{
+	color: #999;
+	font-size: 14px;
+}

@@ -1,0 +1,193 @@
+
+.nav {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    height: 50px;
+    transition: all .25s ease;
+}
+
+.nav-container {
+    padding: 12px 15px 13px;
+}
+
+.logo{
+    width: 30%;
+}
+
+.logo img {
+    width: 67px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.page-title{
+    width: 50%;
+    font-size: 18px;
+    color: #fff;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.menu-icon,.menu-icon2{
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.menu-icon:before,.menu-icon:after{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+}
+
+.menu-icon2:before,.menu-icon2:after{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #1ac0a6;
+}
+
+.menu-icon:before,.menu-icon2:before{
+    top: 3px;
+}
+
+.menu-icon:after,.menu-icon2:after{
+    bottom:3px;
+}
+
+.menu{
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: -200px;
+    height: 100%;
+    z-index: 1000;
+    background: #fff;
+}
+
+.menu .close{
+    width: 100%;
+    height: 55px;
+    display: block;
+    background: url("../images/close.svg") no-repeat 165px 20px ;
+    background-size: 20px 20px;
+}
+
+.menu .menu-list li{
+    height: 35px;
+    line-height: 35px;
+}
+
+.menu .menu-list li a{
+    font-size: 16px;
+    color: #1ac0a6;
+    text-align: right;
+    display: block;
+    padding-right: 18px;
+}
+
+.main {
+    width: 100%;
+    margin-top: -20px;
+}
+
+.news-title {
+    width: 100%;
+    position: relative;
+    background: url("../images/newprice_title_bg.png") no-repeat;
+}
+
+.news-title span {
+    font-size: 16px;
+    color: #fff;
+    padding: 2px 15px 1px;
+}
+
+.news-title p:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #1ac0a6;
+}
+
+.footer {
+    width: 100%;
+}
+
+.footer-container {
+    padding: 10px 27px 16px;
+    text-align: center;
+}
+
+.footer-logo {
+    width: 48px;
+    background-size: cover;
+    height: 18px;
+    display: block;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    width: 48px;
+    height: 18px;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+}
+
+.copyright {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 12px;
+}
+
+.joinButton {
+    width: 85px;
+    height: 184px;
+    position: fixed;
+    top: auto;
+    right: 10px;
+    margin-right: auto;
+    bottom: 10px;
+    z-index:11;
+}
+
+.joinButton .talk {
+    width: 85px;
+    height: 85px;
+    left: 0;
+    margin-left: 0;
+    background: url("../images/Talk_mob.6478e6e.png") no-repeat 50%/contain;
+}
+
+.joinButton .dialogue {
+    width: 85px;
+    height: 85px;
+    left: 0;
+    margin-left: 0;
+    background: url("../images/Dialogue_mob.c3cab49.png") no-repeat 50%/contain;
+    animation: leaves .4s ease-in-out infinite alternate;
+    -webkit-animation: leaves .4s ease-in-out infinite alternate;
+}
+
+@keyframes leaves {
+    0% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./bootstrapcss/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body class="">
+<!--header-->
+<div id="xx">
+   <header>
+        <!-- logo及隐藏菜单按钮 -->
+        <div class="logo">
+            <a href="index" class="logo-img"></a>
+            <button class="dowm-menu" @click="animate()">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- 隐藏菜单 -->
+        <div class="menu" v-if="show">
+            <ul class="nav navbar-nav">
+                <li><a href="./class">全部分类</a></li>
+                <li><a href="./sort">排行榜<span class="new"></span></a></li>
+                <li>
+                    <form action="/search/" id="nav_search_form" class="navbar-form nav-search-form" role="search" method="GET">
+                        <div class="nav-search-bar">
+                            <input type="text" class="form-control" name="kw" id="nav_search_ipt" placeholder="你好！小丑小姐" autocomplete="off">
+                            <button class="btn btn-default" type="submit"></button>
+                        </div>
+                    </form>
+                </li>
+                <li class="jianfan"><a name="StranLink" id="StranLink">简繁切换</a></li>
+                <li v-show="login" class="logined logined1"><span></span><a href="./person">热烈欢迎:  {{user_info.username}}同志</a></li>
+                <!-- <li v-show="login" class="logined logined1"><span></span><a href="./person">个人中心</a></li> -->
+                <li v-show="login" class="logined logined2"><span></span>收藏夹</li>
+                <li v-show="login" v-if="login" class="logined logined3" @click="tuichu()"><span></span>退出登录</li>
+                <li v-show="!login"v-if="!login"><a href="/login">登录</a></li>
+                <li v-show="!login"><a href="/create">注册</a></li>
+                <li>
+                    <a href="/center" class="btn btn-primary submit-novel">
+                        <i class="icon-edit"></i>
+                        <span class="nav-label">投稿</span>
+                        <span class="nav-label">{{user_info.username}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--隐藏菜单end -->
+    </header>
+    <!--header end-->
+</div>
+
+<div class="container">
+    <div class="title">
+        <h1>登 录</h1>
+    </div>
+
+    <div class="main">
+        <ul class="tabs">
+            <li class="active"><a href="#tab1">用户名</a></li>
+            <li><a href="#tab2">邮箱</a></li>
+            <li><a href="#tab3">手机</a></li>
+            <div class="clear"></div>
+        </ul>
+
+        <div class="tab_container">
+            <form action="" method="post">
+                <div id="tab1" class="tab_content" style="display: block; ">
+                    <input class="input" type="text" placeholder="用户名" name="username">
+                    <input class="input" type="password" placeholder="密 码" name="password">
+                    <p>
+                        <input class="checkbox" type="checkbox" align="right">
+                        <label>
+                            <span>记住我</span>
+                            <span class="text">不是自己的电脑不要勾选此项</span>
+                        </label>
+                    </p>
+                    <p class="row">
+                    <div class="col-xs-6">
+                        <input class="button" type="submit" value="登 录">
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="create"><input class="button1" type="button" value="注 册"></a>
+                    </div>
+                    </p>
+                    <a href="#" class="forget">
+                        忘记密码?点击这里找回
+                    </a>
+                    <div class="row icon">
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/qq.png">QQ登录</a>
+				 		</span>
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/wechat.png" alt="">微信登录</a>
+				 		</span>
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/weibo.png" alt="">微博登录</a>
+				 		</span>
+                    </div>
+                </div>
+            </form>
+
+            <form action="" method="post">
+                <div id="tab2" class="tab_content" style="display: none; ">
+                    <input class="input" type="email" placeholder="邮箱" name="email">
+                    <input class="input" type="password" placeholder="密码" name="password">
+                    <p>
+                        <input class="checkbox" type="checkbox" align="right">
+                        <label>
+                            <span>记住我</span>
+                            <span class="text">不是自己的电脑不要勾选此项</span>
+                        </label>
+                    </p>
+                    <p class="row">
+                    <div class="col-xs-6">
+                        <input class="button" type="submit" value="登 录">
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="create"><input class="button1" type="button" value="注 册"></a>
+                    </div>
+                    </p>
+                    <a href="#" class="forget">
+                        忘记密码?点击这里找回
+                    </a>
+                    <div class="row icon">
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/qq.png">QQ登录</a>
+				 		</span>
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/wechat.png" alt="">微信登录</a>
+				 		</span>
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/weibo.png" alt="">微博登录</a>
+				 		</span>
+                    </div>
+                </div>
+            </form>
+
+            <form action="" method="post">
+                <div id="tab3" class="tab_content" style="display: none; ">
+                    <input class="input" type="text" placeholder="手机" name="phoneNumber">
+                    <input class="input" type="password" placeholder="密码" name="password">
+                    <p>
+                        <input class="checkbox" type="checkbox" align="right">
+                        <label>
+                            <span>记住我</span>
+                            <span class="text">不是自己的电脑不要勾选此项</span>
+                        </label>
+                    </p>
+                    <p class="row">
+                    <div class="col-xs-6">
+                        <input class="button" type="submit" value="登 录">
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="create"><input class="button1" type="button" value="注 册"></a>
+                    </div>
+                    </p>
+                    <a href="#" class="forget">
+                        忘记密码?点击这里找回
+                    </a>
+                    <div class="row icon">
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/qq.png">QQ登录</a>
+				 		</span>
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/wechat.png" alt="">微信登录</a>
+				 		</span>
+				 		<span class="col-xs-4">
+							<a href="#"><img src="./images/weibo.png" alt="">微博登录</a>
+				 		</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="link-grid row">
+                        <div class="grid col-xs-4">
+                            <p class="link-grid-title"><b>网站概要</b></p>
+                            <p><a href="#">关于我们</a></p>
+                            <p><a href="#">联系我们</a></p>
+                            <p><a href="#">加入我们</a></p>
+                            <p><a href="#">免责声明</a></p></div>
+                        <div class="grid col-xs-4"><p class="link-grid-title"><b>作者服务</b></p>
+                            <p><a href="#">联系编辑</a></p>
+                            <p><a href="#">福利与签约</a></p></div>
+                        <div class="grid col-xs-4"><p class="link-grid-title"><b>轻之文库</b></p>
+                            <p><a href="#">文库精选</a></p>
+                            <p><a href="#">官方正版</a></p>
+                            <p><a href="#">轻小说文库</a></p></div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="friend-link">
+                        <p class="friend-link-title"><b>首席合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">米画师</a>
+                            <a target="_blank" href="#">MissEvan_M站</a>
+                            <a target="_blank" href="#">网易GACHA</a>
+                            <a target="_blank" href="#">幻音</a>
+                            <a target="_blank" href="#">萌导航</a>
+                            <a target="_blank" href="#">2144游戏网</a>
+                        </p>
+                        <p class="friend-link-title"><b>媒体合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">和邪社</a>
+                            <a target="_blank" href="#">ACGdoge</a>
+                            <a target="_blank" href="#">第一弹</a>
+                            <a target="_blank" href="#">178动漫</a>
+                        </p>
+                        <p class="friend-link-title"><b>游戏合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">少女咖啡枪</a>
+                            <a target="_blank" href="#">诺诺来自异世界</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br><img src="./images/logo.png" class="brand-image">
+            <p class="brand">Copyright 2017 6Book. All Rights Reserved.</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

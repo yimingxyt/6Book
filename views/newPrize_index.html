@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6Book-新人赏</title>
+    <script src="./lib/bootstrap.min.js"></script>
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/newPrize_common.css">
+    <link rel="stylesheet" href="css/newPrize_index.css">
+</head>
+<body>
+<div id="app">
+    <!--顶部导航-->
+    <div class="nav" id="nav">
+        <div class="nav-container">
+            <div class="logo fl"><a :href="index"><img id="logo" :src="newPrizeLogo" alt=""></a></div>
+            <div class="page-title fl">{{pageTitle}}</div>
+            <div class="menu-icon fr" id="menu-icon"></div>
+            <div class="menu" style="width: 200px;">
+                <span class="close"></span>
+                <ul class="menu-list">
+                    <li v-for="(nav,index) in navs"><a :href="nav.href">{{nav.text}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--头部-->
+    <div class="head">
+        <!--头图-->
+        <div :style="headImg"></div>
+    </div>
+    <!--主体内容-->
+    <div class="main">
+        <!--标题-最新资讯-->
+        <div class="news-title">
+            <span>{{objectTitle[0].text}}</span>
+            <p></p>
+        </div>
+        <!--资讯列表-->
+        <div class="news-list">
+            <a href="#" class="news-item" v-for="(article,index) in articles" v-if="index<4">
+                <div class="opacity-bg"></div>
+                <div class="text-truncate">{{article.title}}</div>
+                <div class="date">{{article.date}}</div>
+            </a>
+        </div>
+        <!--投稿列表-->
+        <div class="contribute-list">
+            <div class="contribute-list-title">{{objectTitle[1].text}}</div>
+            <div class="contribute-list-content">
+                <a href="#" class="work-item" v-for="(novel,index) in novels">
+                    <div class="truncateTxt">{{novel.title}}</div>
+                    <div class="content-truncate">{{novel.content}}</div>
+                    <div class="author">
+                        <img :src="novel.authorImg">
+                        <span class="name">{{novel.name}}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!--查看所有作品-->
+        <div class="contribute-list-title">
+            <a href="#">{{objectTitle[2].text}}</a>
+        </div>
+        <div class="mobile-blocks">
+            <img :src="img.src" alt="" width="100%" v-for="(img,index) in imgs">
+        </div>
+    </div>
+
+    <!--脚部信息-->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-logo"><img :src="newPrizeFootLogo" alt=""></div>
+            <div class="copyright" v-html="copyright">{{copyright}}</div>
+        </div>
+    </div>
+    <!--右下角固定按钮-->
+    <div class="joinButton">
+        <div class="talk"></div>
+        <div class="dialogue"></div>
+    </div>
+</div>
+<script src="js/newPrize.js"></script>
+<script src="./js/newPrize_vue.js"></script>
+
+</body>
+</html>

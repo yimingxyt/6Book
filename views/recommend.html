@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>recommend</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
+	<link rel="stylesheet" href="css/recommend.css">
+	<link rel="stylesheet" href="./css/common.css">
+
+	<script src="js/recommend.js" type="text/javascript"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+	<script src="js/vue.js"></script>
+	
+</head>
+<body style="font-size: 13px;">
+	<!-- 头部 -->
+	<div id="xx">
+		<nav-top></nav-top>
+		<header>
+			<!-- logo及隐藏菜单按钮 -->
+			<div class="logo">
+				<a href="/index" class="logo-img"></a>
+				<button class="dowm-menu" @click="animate()">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- 隐藏菜单 -->
+			<div class="menu" v-if="show">
+				<ul class="nav navbar-nav">
+					<li><a href="/class">全部分类</a></li>
+					<li><a href="/sort">排行榜<span class="new"></span></a></li>
+					<li>
+						<form action="/search/" id="nav_search_form" class="navbar-form nav-search-form" role="search" method="GET">
+							<div class="nav-search-bar">
+								<input type="text" class="form-control" name="kw" id="nav_search_ipt" placeholder="你好！小丑小姐" autocomplete="off">
+								<button class="btn btn-default" type="submit"></button>
+							</div>
+						</form>
+					</li>
+					<li class="jianfan"><a name="StranLink" id="StranLink">简繁切换</a></li>
+					<li v-show="login" class="logined logined1"><span></span><a href="./person">热烈欢迎:  {{user_info.username}}同志</a></li>
+					<!-- <li v-show="login" class="logined logined1"><span></span><a href="./person">个人中心</a></li> -->
+					<li v-show="login" class="logined logined2"><span></span>收藏夹</li>
+					<li v-show="login" v-if="login" class="logined logined3" @click="tuichu()"><span></span>退出登录</li>
+					<li v-show="!login"v-if="!login"><a href="/login">登录</a></li>
+					<li v-show="!login"><a href="/create">注册</a></li>
+					<li>
+						<a href="/center" class="btn btn-primary submit-novel">
+							<i class="icon-edit"></i>
+							<span class="nav-label">投稿</span>
+							<span class="nav-label">{{user_info.username}}</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--隐藏菜单end -->
+		</header>
+	</div>
+	<!-- 具体介绍区 -->
+
+	<div class="content container" id="comApp">
+		<div class="main_center">
+			<p>
+				<span><a href="/">主页</a></span>
+				<span class="acti_center"><a href=""><%=category%></a></span>
+			</p>
+		</div>
+
+		<p class="title">
+			<span class="small_box"></span>
+			<span  class="title_text"><%=title_text%></span>
+		
+		</p>
+		<div id="img_title" class="specific_content" >
+			
+		   	<%for(let i=0;i<data.length;i++){%>
+            	<div class="specific">
+					<a href="">
+						<img src="images/recommend/<%=data[i].photo%>.jpg!min300jpg" alt="">
+						<p id="" class="text"><%= data[i].title %></p>
+					</a>
+				</div>
+        	<% } %>
+			
+		</div>
+		
+	</div>
+
+	<!-- 导航 -->
+	<nav id="myApp">
+		<ul id="all_page">
+			<li id="pre">
+				<a class="pre_page" data-page='1' href="">上一页</a>
+			</li>
+
+		   	<%for(let i=1;i<data.length;i++){%>
+			<li>
+				<span><a id="normal_a" data-page='<%=i%>' class="normal_page" href="./api/getList/<%=i%>"><%=i%></a></span>
+			</li>
+			<% } %>
+			
+			<li id="next" v-on:click='next'>
+				<a class="next_page" data-page='1' href="">下一页</a>
+			</li>
+		</ul>
+		
+	</nav>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="link-grid row">
+						<div class="grid col-xs-4">
+							<p class="link-grid-title"><b>网站概要</b></p>
+							<p><a href="#">关于我们</a></p>
+							<p><a href="#">联系我们</a></p>
+							<p><a href="#">加入我们</a></p>
+							<p><a href="#">免责声明</a></p></div>
+						<div class="grid col-xs-4"><p class="link-grid-title"><b>作者服务</b></p>
+							<p><a href="#">联系编辑</a></p>
+							<p><a href="#">福利与签约</a></p></div>
+						<div class="grid col-xs-4"><p class="link-grid-title"><b>轻之文库</b></p>
+							<p><a href="#">文库精选</a></p>
+							<p><a href="#">官方正版</a></p>
+							<p><a href="#">轻小说文库</a></p></div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="friend-link">
+						<p class="friend-link-title"><b>首席合作</b></p>
+						<p>
+							<a target="_blank" href="#">米画师</a>
+							<a target="_blank" href="#">MissEvan_M站</a>
+							<a target="_blank" href="#">网易GACHA</a>
+							<a target="_blank" href="#">幻音</a>
+							<a target="_blank" href="#">萌导航</a>
+							<a target="_blank" href="#">2144游戏网</a>
+						</p>
+						<p class="friend-link-title"><b>媒体合作</b></p>
+						<p>
+							<a target="_blank" href="#">和邪社</a>
+							<a target="_blank" href="#">ACGdoge</a>
+							<a target="_blank" href="#">第一弹</a>
+							<a target="_blank" href="#">178动漫</a>
+						</p>
+						<p class="friend-link-title"><b>游戏合作</b></p>
+						<p>
+							<a target="_blank" href="#">少女咖啡枪</a>
+							<a target="_blank" href="#">诺诺来自异世界</a>
+						</p>
+					</div>
+					<ul class="pr-link">
+						<li><b>友情链接</b></li>
+						<li><a href="#">喵特漫展</a></li>
+						<li><a href="#">画萌网</a></li>
+						<li><a href="#">胖次网</a></li>
+						<li><a href="#">CnGal</a></li>
+						<li><a href="#">Cooi社区</a></li>
+						<li><a href="#">萌玩网</a></li>
+						<li><a href="#">源音塘</a></li>
+						<li><a href="#">漫漫漫画</a></li>
+						<li><a href="#">翼萌动漫</a></li>
+						<li><a href="#">柚栖</a></li>
+						<li><a href="#">大角虫漫画</a></li>
+						<li><a href="#">汇漫网</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<br><img src="./images/logo.png" class="brand-image">
+			<p class="brand">Copyright 2017 6Book. All Rights Reserved.</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		
+			new Vue({
+				el:'#myApp',
+				methods:{
+					
+				}
+			});
+			let index_page=1;
+			$('#pre').on('click','a', function(){
+				
+				if(index_page>1){
+					$('#pre a').attr({'data-page':(index_page-1)})
+					$('#pre a').attr({'href':'./api/getList/'+(index_page-1)});
+				}else{
+					$('#pre a').attr({'data-page':(index_page)})
+					$('#pre a').attr({'href':'./api/getList/'+(index_page)})
+				}
+				return false;
+			});
+
+			$('#next').on('click','a', function(){
+				if(index_page<3){
+					$('#next a').attr({'data-page':(index_page*1+1)})
+					$('#next a').attr({'href':'./api/getList/'+(index_page*1+1)})
+				}else{
+					$('#next a').attr({'data-page':(index_page)})
+					$('#next a').attr({'href':'./api/getList/'+(index_page)})
+				}
+				return false;
+			});
+
+			$('#all_page li').on('click','a',function(){
+				$('a').removeClass('on');
+				$(this).addClass('on');
+				index_page=$(this).attr('data-page');//当前页码
+
+				let url = $(this).attr('href');
+				console.log(url);
+				let title;
+				let img;
+				$.ajax({
+				   type: "GET",
+				   url: url,
+				   dataType: 'json',
+				   success: function(json){
+				   	let list_html='';
+				   	let page_html='';
+				   		
+				   		for(let i=0;i<json.data.length;i++){
+				   			
+				   			list_html+= '<div class="specific">';
+						    list_html+= '<a href="">';
+							list_html+='<img src="images/recommend/'+json.data[i].photo+'.jpg!min300jpg" alt="">';
+							list_html+= '<p id="" class="text">'+json.data[i].title+'</p>';
+						    list_html+= '</a>';
+					        list_html+='</div>';
+
+				   		}
+				  
+				        $('#img_title').html(list_html);
+				   },
+				   error:function(err){
+			   			alert('ajx拿不到数据');
+				   }
+					
+				});
+				return false;
+				
+			})
+
+			
+		
+	</script>
+</body>
+</html>

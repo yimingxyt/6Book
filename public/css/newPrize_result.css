@@ -1,0 +1,120 @@
+/*================新人赏获奖结果页面==================*/
+
+.head img {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    margin-top: 0;
+}
+
+.groups {
+    margin: 0 25px;
+    width: 80%;
+}
+
+.groups ul{
+    width:100%;
+    display: inline-block;
+}
+
+.groups .tab-btn {
+    width: 33%;
+    height: 30px;
+}
+
+.groups .tab-long {
+    background: url("../images/longGroup.png") no-repeat;
+    background-size: contain;
+}
+
+.groups .tab-middle {
+    background: url("../images/midGroup.png") no-repeat;
+    background-size: contain;
+}
+
+.groups .tab-short {
+    background: url("../images/shortGroup.png") no-repeat;
+    background-size: contain;
+}
+
+.groups .tab-long2 {
+    background: url("../images/longGroup2.png") no-repeat;
+    background-size: contain;
+}
+
+.groups .tab-middle2 {
+    background: url("../images/midGroup2.png") no-repeat;
+    background-size: contain;
+}
+
+.groups .tab-short2 {
+    background: url("../images/shortGroup2.png") no-repeat;
+    background-size: contain;
+}
+
+.result-page .home{
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 10px solid #fdd08a;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.long,.middle,.short{
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
+.result-page .home a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.result-page .home a img{
+    width:100%;
+    margin-top: -5px;
+}
+
+.success .success-title img{
+    width: 100%;
+}
+
+.success .succeed-result{
+    font-size: 8px;
+    font-weight: 700;
+    text-align: center;
+    background: url("../images/bg_3.da49e4e.png") no-repeat 50%;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.success .succeed-result a{
+    display: block;
+    margin-top: 1px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.rules a{
+    width: 100%;
+    height:100%;
+}
+
+.rules a img{
+    width: 100%;
+}
+
+.finish img{
+    margin-top: -5px;
+    width: 100%;
+    height: 100%;
+}

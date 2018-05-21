@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 41.4px;">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>contrat</title>
+	<link rel="stylesheet" href="./lib/bootstrap.min.css">
+	<link rel="stylesheet" href="css/contrat.css">
+	<link rel="stylesheet" href="css/common.css">
+	<script src="./lib/jquery-3.2.1.min.js"></script>
+	<script src="./lib/bootstrap.min.js"></script>
+	<script src="js/contrat.js" type="text/javascript"></script>
+	<script src="lib/vue.js"></script>
+</head>
+<body style="font-size: 13px;">
+	<!-- 头部 -->
+	<div id="xx">
+		<header>
+			<!-- logo及隐藏菜单按钮 -->
+			<div class="logo">
+				<a href="index" class="logo-img"></a>
+				<button class="dowm-menu" @click="animate()">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- 隐藏菜单 -->
+			<div class="menu" v-if="show">
+				<ul class="nav navbar-nav">
+					<li><a href="./class">全部分类</a></li>
+					<li><a href="./sort">排行榜<span class="new"></span></a></li>
+					<li>
+						<form action="/search/" id="nav_search_form" class="navbar-form nav-search-form" role="search" method="GET">
+							<div class="nav-search-bar">
+								<input type="text" class="form-control" name="kw" id="nav_search_ipt" placeholder="你好！小丑小姐" autocomplete="off">
+								<button class="btn btn-default" type="submit"></button>
+							</div>
+						</form>
+					</li>
+					<li class="jianfan"><a name="StranLink" id="StranLink">简繁切换</a></li>
+					<li v-show="login" class="logined logined1"><span></span><a href="./person">热烈欢迎:  {{user_info.username}}同志</a></li>
+					<!-- <li v-show="login" class="logined logined1"><span></span><a href="./person">个人中心</a></li> -->
+					<li v-show="login" class="logined logined2"><span></span>收藏夹</li>
+					<li v-show="login" v-if="login" class="logined logined3" @click="tuichu()"><span></span>退出登录</li>
+					<li v-show="!login"v-if="!login"><a href="/login">登录</a></li>
+					<li v-show="!login"><a href="/create">注册</a></li>
+					<li>
+						<a href="/center" class="btn btn-primary submit-novel">
+							<i class="icon-edit"></i>
+							<span class="nav-label">投稿</span>
+							<span class="nav-label">{{user_info.username}}</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--隐藏菜单end -->
+		</header>
+	</div>
+	<!-- 内容 -->
+	<div class="content">
+		<img class="wefare" src="images/welfare.jpg" alt="">
+		<div class="two_types">
+			<p class="first_cate">
+				轻之文库签约作品分为两类：
+				<b class="commercial">商业签约</b>
+					与
+				<b class="artical">文库签约</b>
+				，稿酬福利根据签约类型有所区别
+			</p>
+			
+			<p>此制度于2018年4月1日开始执行</p>
+		</div>
+		<!-- 签约制度 -->
+		<div class="institution">
+			<h2 class="ins_title">一、签约制度</h2>
+			<div class="ins_content">
+				
+				<h2 class="artical_contribution">商业签约买断稿酬</h2>
+				<p class="p1">轻之文库商业签约作品的稿酬经过编辑审核并与作者协商</p>
+				<p class="p2">轻之文库商业签约作品的稿酬经过编辑审核并与作者协商</p>
+				<ul class="text_money">
+					<li class="text_li">
+						<img src="images/s_level.png" alt="">
+						<b class="bb1">8000元以上</b>
+						<p>每10万字</p>
+					</li>
+					<li class="text_li">
+						<img src="images/a_level.png" alt="">
+						<b>8000元以上</b>
+						<p>每10万字</p>
+					</li>
+					<li class="text_li">
+						<img src="images/b_level.png" alt="">
+						<b>8000元以上</b>
+						<p>每10万字</p>
+					</li>
+					<li class="text_li">
+						<img src="images/c_level.png" alt="">
+						<b>8000元以上</b>
+						<p>每10万字</p>
+					</li>
+					
+				</ul>
+				<ul class="feature_list">
+					<li>
+						<h3>封面插图配置</h3>
+						<p class="list_p1">所有商签作品一经签约</p>
+						<p>每卷小说均配置：</p>
+						<p><b>1张封面与1张全彩插图</b></p>
+						<p>B级以上作品（不含B级）</p>
+						<p>每高一级，额外多配置：</p>
+						<p><b>1张全彩插图</b></p>
+					</li>
+					<li style="height: 5.8584rem;">
+						<h3>保底稿酬升级</h3>
+						<p class="list_p1">商业签约作品每写完5卷</p>
+						<p>可向编辑申请提升稿酬</p>
+						<p><b>申请成功后可升级，</b></p>
+						<p>升级后稿酬与福利随之提升</p>
+						<p>申请如未通过对现有福利无影响</p>
+						<p><b>稿酬升级根据作品人气、作品质量、</b></p>
+						<p>交稿准时度三个方面考核</p>
+					</li>
+					<li style="height: 5.8584rem;">
+						<h3>作品推荐</h3>
+						<p class="list_p1">商签作品在新卷发布时</p>
+						<p>可向编辑申请提升稿酬</p>
+						<p>申请成功后可升级，</p>
+						<p><b>无条件网站轮播图推荐1次</b></p>
+						<p><b>每次不低于7天展示期</b></p>
+						<p>此奖励为商签作品专享</p>
+					</li>
+				</ul>
+			</div>	
+		</div>
+		<!-- 文库签约全勤稿酬 -->
+		<div class="artical_ware_house">
+			<h2 class="sign_h2">文库签约全勤稿酬</h2>
+			<p style="margin-top: 0.3623rem;text-align: center;">文库签约不设等级，按更新字数发放每月全勤奖</p>
+			<div class="day_pay">
+				<p>
+					每月更新10天，更新当天满8000字
+					<span>可获400元</span> 
+				</p>
+				<p>
+					每月更新10天，更新当天满16000字
+					<span>可获800元</span> 
+				</p>
+
+			</div>
+			<p style="margin-top: 0.72463768rem;text-align: center;">注：两次更新间隔最大不可超过4天，超过即由统计系统判定为断更，当月若剩余天数足够，仍可重新开始计算考勤。</p>
+			<p>如发现作品更新存在字数灌水行为，轻之文库一经发现将永久撤回本作品稿酬领取资格。</p>
+				
+			
+			<ul class="feature_list">
+					<li style="height: 3.8743rem;">
+						<h3>封面插图配置</h3>
+						<p class="list_p1">所有商签作品一经签约</p>
+						<p>可获得：</p>
+						<p><b>原创封面1张</b></p>
+					</li>
+					<li style="height: 4.5024rem;">
+						<h3>保底稿酬升级</h3>
+						<p class="list_p1">文库签约作品每更新10万字</p>
+						<p>可提交资料</p>
+						<p>申请升级为商签作品</p>
+						<p>经过编辑审核即可升级</p>
+						
+					</li>
+					<li style="height: 5.8584rem;">
+						<h3>作品推荐</h3>
+						<p class="list_p1">商签作品在新卷发布时</p>
+						<p>可向编辑申请提升稿酬</p>
+						<p>申请成功后可升级，</p>
+						<p><b>无条件网站轮播图推荐1次</b></p>
+						<p><b>每次不低于7天展示期</b></p>
+						<p>此奖励为商签作品专享</p>
+					</li>
+				</ul>
+				<!-- 二、作品奖励 -->
+				<div class="artical_reward">
+					<h2>二、作品奖励</h2>
+					<h2>月度优秀商签作品奖励</h2>
+					<p class="art_p1">每月我们将根据作品的综合成绩</p>
+					<p>选出10本表现优异的商签作品进行奖励</p>
+					<table class="first_table" cellpadding="0" cellspacing="0">
+						<tr>
+							<td>第一名</td>
+							<td>2000元</td>
+						</tr>
+						<tr style="background: #ddd;">
+							<td>第二名</td>
+							<td>2000元</td>
+						</tr>
+						<tr>
+							<td>第三名</td>
+							<td>2000元</td>
+						</tr>
+					</table>
+					<small>* 上榜作品当月需更新满50000字方可领取奖励</small>
+					<div class="reward">
+						<h2>月票榜奖励</h2>	
+						<p>每月月票榜排名前五的文库签约作品，将由轻之文库编辑部审核，选择一本升级为商签作品</p>
+						<p>其余未通过审核的文签作品，获得当月全勤奖励的50%额外奖励</p>
+						<p>每月月票榜排名前10的未签约作品，将由轻之文库编辑部审核，升级为文库签约作品</p>
+					</div>
+					<div class="reward">
+						<h2>月度新书奖励</h2>	
+						<p>每月重推榜新书排名前十的未签约作品，奖励原创封面1张</p>
+						<p>此奖励不可折现，每部作品仅可领取一次</p>
+						
+					</div>
+					<div class="reward_bom"></div>
+					<!-- 续签奖励 -->
+					<div class="continue_sign">
+						<h2>续签奖励</h2>
+						<p>作者如选择与轻之文库续签，续签作品为商签时：</p>
+						<p>上一本作品若更新超过50万字，奖励500元</p>
+						<p>上一本作品若更新超过100万字，奖励1000元</p>
+						<p>上一本作品若更新超过200万字，奖励2500元</p>
+						<p class="atendtion">
+							<small>* 商签作品获取此奖励</small></p>
+							
+							<p><small>需两卷更新间隔没有超过2个月的断更期</small></p>
+					</div>
+					<div class="continue_sign">
+						<h2>续签作品为文签时：</h2>
+						<p>上一本作品若更新超过50万字，奖励300元</p>
+						<p>上一本作品若更新超过50万字，奖励300元</p>
+						<p>上一本作品若更新超过200万字，奖励1500元</p>
+						<p class="atendtion">
+							<small>* 文签作品获取此奖励</small></p>
+							
+							<p><small>需在更新期内未达成全勤的次数不超过3次s</small></p>
+							<p><small>不包含通过编辑确认的请假次数</small></p>
+					</div>
+					<div class="reward_bom"></div>
+					<!-- 分成 -->
+					<div class="divided divided1">
+						 <h2>轻币打赏分成</h2>
+						 <p>商业签约作品可提取轻币打赏60%到作者钱包</p>
+						 <p>文库签约作品可提取轻币打赏50%到作者钱包</p>
+					</div>
+					<div class="divided divided2">
+						 <h2>改编收益</h2>
+						 <p>轻之文库签约作品如成功改编，将按照合同所约定分成比例获得分成</p>
+						 
+					</div>
+					<!-- 作品签约方法 -->
+					<div class="sign_method">
+						<h2>作品签约的方法</h2>
+						<p class="sign_p1">1. 所有作品在网站连载到第3万字时与每更新满10万字时可申请签约</p>
+						<p>2. 申请签约需同时提交前三卷大纲与主要角色设定，无论存稿字数</p>
+						<p>3. 轻之文库会根据稿件情况评判签约类型</p>
+					</div>
+					<div class="not_fit">
+						<h2>不适宜签约的作品</h2>
+						<p class="sign_p1">1. 已经被其他网站独家签约或买断的作品</p>
+						<p>2. 违反我国相关法律法规的作品</p>
+						<p>3. 不符合青少年价值观取向或有 不适宜公开刊登内容的作品</p>
+					</div>
+				</div>
+				<!-- 评论 -->
+				<!-- <div class="comment">
+					<div class="btm_com">
+						<textarea name="" id="" cols="30" rows="10" placeholder="在这里输入评论，请自觉遵守法规，严禁发布色情、暴力、反动言论"></textarea>
+						<div class="to_com">
+							<a href="/"><img src="images/emotion.png" alt=""></a>
+							<button>发表评论</button>
+						</div>
+					</div>
+					<div class="login">
+						<a class="a1" href="/">登录</a>
+						后再评论, 没有账号请先 
+						<a class="a2" href="/">注册</a>
+					</div>
+				</div> -->
+		</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="link-grid row">
+						<div class="grid col-xs-4">
+							<p class="link-grid-title"><b>网站概要</b></p>
+							<p><a href="#">关于我们</a></p>
+							<p><a href="#">联系我们</a></p>
+							<p><a href="#">加入我们</a></p>
+							<p><a href="#">免责声明</a></p></div>
+						<div class="grid col-xs-4"><p class="link-grid-title"><b>作者服务</b></p>
+							<p><a href="#">联系编辑</a></p>
+							<p><a href="#">福利与签约</a></p></div>
+						<div class="grid col-xs-4"><p class="link-grid-title"><b>轻之文库</b></p>
+							<p><a href="#">文库精选</a></p>
+							<p><a href="#">官方正版</a></p>
+							<p><a href="#">轻小说文库</a></p></div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="friend-link">
+						<p class="friend-link-title"><b>首席合作</b></p>
+						<p>
+							<a target="_blank" href="#">米画师</a>
+							<a target="_blank" href="#">MissEvan_M站</a>
+							<a target="_blank" href="#">网易GACHA</a>
+							<a target="_blank" href="#">幻音</a>
+							<a target="_blank" href="#">萌导航</a>
+							<a target="_blank" href="#">2144游戏网</a>
+						</p>
+						<p class="friend-link-title"><b>媒体合作</b></p>
+						<p>
+							<a target="_blank" href="#">和邪社</a>
+							<a target="_blank" href="#">ACGdoge</a>
+							<a target="_blank" href="#">第一弹</a>
+							<a target="_blank" href="#">178动漫</a>
+						</p>
+						<p class="friend-link-title"><b>游戏合作</b></p>
+						<p>
+							<a target="_blank" href="#">少女咖啡枪</a>
+							<a target="_blank" href="#">诺诺来自异世界</a>
+						</p>
+					</div>
+					<ul class="pr-link">
+						<li><b>友情链接</b></li>
+						<li><a href="#">喵特漫展</a></li>
+						<li><a href="#">画萌网</a></li>
+						<li><a href="#">胖次网</a></li>
+						<li><a href="#">CnGal</a></li>
+						<li><a href="#">Cooi社区</a></li>
+						<li><a href="#">萌玩网</a></li>
+						<li><a href="#">源音塘</a></li>
+						<li><a href="#">漫漫漫画</a></li>
+						<li><a href="#">翼萌动漫</a></li>
+						<li><a href="#">柚栖</a></li>
+						<li><a href="#">大角虫漫画</a></li>
+						<li><a href="#">汇漫网</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<br><img src="./images/logo.png" class="brand-image">
+			<p class="brand">Copyright 2017 6Book. All Rights Reserved.</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>

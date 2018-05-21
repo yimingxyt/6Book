@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>注册</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 加载Boots核心样式 -->
+	<link rel="stylesheet" href="./bootstrapcss/bootstrap.min.css">
+	<!-- 加载Boots（主题文件）可以不引入 -->
+	<link rel="stylesheet" href="./bootstrapcss/bootstrap-theme.min.css" />
+	<!-- 公共样式表 -->
+	<link rel="stylesheet" type="text/css" href="./css/common.css">
+	<!-- 加载样式表 -->
+	<link rel="stylesheet" type="text/css" href="./css/create.css">
+
+	<!-- 引用Vue -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<!-- 加载JQ -->
+	<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="./js/bootstrap.min.js"></script>
+	<!-- 加载JS文件 -->
+	<script type="text/javascript" src="js/login.js"></script>
+	<!-- 加载JS文件 -->
+	<script type="text/javascript" src="js/code.js"></script>
+	<!-- 加载JS文件 -->
+	<script type="text/javascript" src="js/create.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+<!--header-->
+<div id="xx">
+	<header>
+        <!-- logo及隐藏菜单按钮 -->
+        <div class="logo">
+            <a href="index" class="logo-img"></a>
+            <button class="dowm-menu" @click="animate()">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- 隐藏菜单 -->
+        <div class="menu" v-if="show">
+            <ul class="nav navbar-nav">
+                <li><a href="./class">全部分类</a></li>
+                <li><a href="./sort">排行榜<span class="new"></span></a></li>
+                <li>
+                    <form action="/search/" id="nav_search_form" class="navbar-form nav-search-form" role="search" method="GET">
+                        <div class="nav-search-bar">
+                            <input type="text" class="form-control" name="kw" id="nav_search_ipt" placeholder="你好！小丑小姐" autocomplete="off">
+                            <button class="btn btn-default" type="submit"></button>
+                        </div>
+                    </form>
+                </li>
+                <li class="jianfan"><a name="StranLink" id="StranLink">简繁切换</a></li>
+                <li v-show="login" class="logined logined1"><span></span><a href="./person">热烈欢迎:  {{user_info.username}}同志</a></li>
+                <!-- <li v-show="login" class="logined logined1"><span></span><a href="./person">个人中心</a></li> -->
+                <li v-show="login" class="logined logined2"><span></span>收藏夹</li>
+                <li v-show="login" v-if="login" class="logined logined3" @click="tuichu()"><span></span>退出登录</li>
+                <li v-show="!login"v-if="!login"><a href="/login">登录</a></li>
+				<li v-show="!login"><a href="/create">注册</a></li>
+                <li>
+                    <a href="/center" class="btn btn-primary submit-novel">
+                        <i class="icon-edit"></i>
+                        <span class="nav-label">投稿</span>
+                        <span class="nav-label">{{user_info.username}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--隐藏菜单end -->
+    </header>
+    <!--header end-->
+</div>
+
+<div class="container">
+	<div class="title">
+		<h1>注 册</h1>
+	</div>
+
+	<div class="main">
+		<ul class="tabs">  
+	        <li class="active"><a href="#tab2">邮箱</a></li> 
+	        <li><a href="#tab3">手机</a></li> 
+	        <div class="clear"></div> 
+	    </ul>  
+		<form action="" method="post">
+		    <div class="tab_container" id="myUser">  
+		        <div id="tab2" class="tab_content" style="display: none; ">  
+		   <!--   <div class="box4">
+                 <div class="wod">
+                     邮箱:
+                 </div>
+                 <input class="yx" type="email" name="name" value="">
+                 <div class='tips'>请输入电子邮件</div>
+             </div> -->
+		            <input class="input yx"  id="email" type="email" placeholder="邮箱地址" v-model='upLoadUser.email' name="email">
+		            <div class='tips'>请输入电子邮件</div>
+		            <p>
+		            
+		            	<input class="input1" id="user_code" type="text" placeholder="验证码">
+		            	<span class="check_code" id="check_code">
+		            		<span></span>
+		            		<span></span>
+		            		<span></span>
+		            		<span></span>
+		            		<span></span>
+		            		<span></span>
+		            	</span> 
+		            </p>
+		            <p class="row">
+		            	<div class="col-xs-6">
+		            		<!-- <a href="#tab4"><input class="button" id="checkCode" type="button" data-toggle="modal" data-target="#myModal" value="下一步" ></a> -->
+		            		<a href="#tab4"><input class="button" id="checkCode" type="button" value="下一步" ></a>
+		            	</div>
+		            	<div class="col-xs-6">
+		            		<a href="login"><input class="button1" type="button" value="登 录"></a>
+		            	</div>
+		            	<span id="msg"></span>
+		            </p>
+		        </div>  
+		        <div id="tab3" class="tab_content" style="display: none; ">  
+		            <input class="input phone" id="phoneNum" type="text" placeholder="手机号" v-model='upLoadUser.phoneNumber' name="phoneNumber">
+		            <div class="tips">请输入11位手机号</div>
+		            <p>
+		            	<input class="input1" id="user_code1" type="text" placeholder="验证码">
+		            	<i class="check_code" id="check_code1">
+		            		<i>1</i>
+		            		<i>2</i>
+		            		<i>3</i>
+		            		<i>4</i>
+		            		<i>5</i>
+		            		<i>6</i>
+		            	</i> 
+		            </p>
+		            <p class="row">
+		            	<div class="col-xs-6">
+		            		<a href="#tab4"><input class="button" id="checkCode1" type="button" value="下一步"></a>
+		            	</div>
+		            	<div class="col-xs-6">
+		            		<a href="login"><input class="button1" type="button" value="登 录"></a>
+		            	</div>
+		            	<span id="msg1"></span>
+		            </p>
+		        </div>  
+		        <div id="tab4" class="tab_content" style="display: none; ">
+		        	<input class="input nam" type="text" placeholder="用户名" v-model="upLoadUser.userName" name="username">
+		        	<div class='tips'>用户名长度在20个字符以内</div>
+		        	<input class="input pw1" type="password" placeholder="密码" v-model="upLoadUser.password" name="password">
+		        	 <div class='tips'>请输入6-20位密码(必须有大小写及数字)</div>
+		        	<input class="input pw2" type="password" placeholder="确认密码">
+		        	<div class='tips'>密码与上面输入一致</div>
+		        	<a href="#"><input class="button2" type="submit" value="注 册" @click="addUser()"></a>
+		        </div>
+		    </div>  
+		</div>
+	</form> 
+	<script type="text/javascript">
+		// let myUser = new Vue({
+		// 	el:'#myUser',
+		// 	data:{
+		// 		upLoadUser:{
+		// 			email:'',
+		// 			phoneNumber:'',
+		// 			userName:'',
+		// 			password:'',
+		// 		}
+		// 	},
+		// 	methods:{
+		// 		addUser:function(){
+		// 			console.log(this.upLoadUser);
+		// 		}
+		// 	}
+		// });
+	</script>
+	<!-- 模态框 -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  	<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+		      	<div class="modal-header">
+		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        	<h4 class="modal-title" id="myModalLabel">提示</h4>
+		      	</div>
+		      	<div class="modal-body">
+		       	 	您的邮箱地址有误,请重新输入!!!
+		     	</div>
+	    	</div>
+	  	</div>
+	</div>
+
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  	<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+		      	<div class="modal-header">
+		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        	<h4 class="modal-title" id="myModalLabel">提示</h4>
+		      	</div>
+		      	<div class="modal-body">
+		       	 	您的手机号有误,请重新输入!!!
+		     	</div>
+	    	</div>
+	  	</div>
+	</div>
+
+	<!-- 底部 -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="link-grid row">
+                        <div class="grid col-xs-4">
+                            <p class="link-grid-title"><b>网站概要</b></p>
+                            <p><a href="#">关于我们</a></p>
+                            <p><a href="#">联系我们</a></p>
+                            <p><a href="#">加入我们</a></p>
+                            <p><a href="#">免责声明</a></p></div>
+                        <div class="grid col-xs-4"><p class="link-grid-title"><b>作者服务</b></p>
+                            <p><a href="#">联系编辑</a></p>
+                            <p><a href="#">福利与签约</a></p></div>
+                        <div class="grid col-xs-4"><p class="link-grid-title"><b>轻之文库</b></p>
+                            <p><a href="#">文库精选</a></p>
+                            <p><a href="#">官方正版</a></p>
+                            <p><a href="#">轻小说文库</a></p></div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="friend-link">
+                        <p class="friend-link-title"><b>首席合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">米画师</a>
+                            <a target="_blank" href="#">MissEvan_M站</a>
+                            <a target="_blank" href="#">网易GACHA</a>
+                            <a target="_blank" href="#">幻音</a>
+                            <a target="_blank" href="#">萌导航</a>
+                            <a target="_blank" href="#">2144游戏网</a>
+                        </p>
+                        <p class="friend-link-title"><b>媒体合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">和邪社</a>
+                            <a target="_blank" href="#">ACGdoge</a>
+                            <a target="_blank" href="#">第一弹</a>
+                            <a target="_blank" href="#">178动漫</a>
+                        </p>
+                        <p class="friend-link-title"><b>游戏合作</b></p>
+                        <p>
+                            <a target="_blank" href="#">少女咖啡枪</a>
+                            <a target="_blank" href="#">诺诺来自异世界</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br><img src="./images/logo.png" class="brand-image">
+            <p class="brand">Copyright 2017 6Book. All Rights Reserved.</p>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/index.js"></script>
+</html>
